@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://upntbd6xn4kp"]
+
+[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="1_soe0h"]
+
+[node name="HpComponent" type="Node2D"]
+script = ExtResource("1_soe0h")

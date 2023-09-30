@@ -1,10 +1,8 @@
 extends Node2D
+class_name HpComponent
 
-# Fix the type when add ':'
-# @export var MAX_HEALT : float = 10
-@export var MAX_HEALT := 10.0
-
-var health : float
+@export var INITIAL_HP := 30
+var curr_hp = INITIAL_HP
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +13,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _damage(attack: Attack):
-	
+func take_damage(amount):
+	curr_hp -= amount
+	if(curr_hp <= 0):
+		get_parent().queue_free()

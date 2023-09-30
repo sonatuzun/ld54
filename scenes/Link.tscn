@@ -1,9 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg7d3ssaoh8nn"]
+[gd_scene load_steps=13 format=3 uid="uid://bg7d3ssaoh8nn"]
 
 [ext_resource type="Script" path="res://scripts/Link.gd" id="1_ks5dt"]
+[ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_sbp6y"]
 [ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://assets/link_spritesheet.png" id="2_sogy7"]
+[ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="3_58lwe"]
 [ext_resource type="PackedScene" uid="uid://fhg75rjc8nvb" path="res://scenes/WrenchDoruk.tscn" id="3_xm1sh"]
 [ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="5_iiegp"]
+[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="5_wwub0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnp2p"]
+shader = ExtResource("2_sbp6y")
+shader_parameter/isEnabled = false
+shader_parameter/paintColor = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
 radius = 39.0
@@ -12,6 +21,9 @@ height = 128.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akpqs"]
 render_priority = 0
 shader = ExtResource("4_qrecx")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqxw8"]
+radius = 46.2709
 
 [node name="Link" type="RigidBody2D"]
 mass = 33.0
@@ -26,9 +38,11 @@ node_a = NodePath("../Wrench")
 node_b = NodePath("..")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qnp2p")
 texture = ExtResource("2_sogy7")
 hframes = 10
 vframes = 8
+script = ExtResource("3_58lwe")
 
 [node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
 mass = 3.0
@@ -50,3 +64,15 @@ z_index = 100
 material = SubResource("ShaderMaterial_akpqs")
 position = Vector2(-0.500015, -3.05176e-05)
 scale = Vector2(16.2109, 10.2812)
+
+[node name="HpComponent" type="Node2D" parent="."]
+script = ExtResource("5_wwub0")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent") groups=["Player"]]
+script = ExtResource("5_iiegp")
+hpComponent = NodePath("../HpComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_dqxw8")
+
+[connection signal="damageTaken" from="HpComponent" to="Sprite" method="flash"]

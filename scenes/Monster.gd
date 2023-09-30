@@ -23,7 +23,7 @@ func _physics_process(delta):
 		apply_central_impulse(impulse)
 	$Sprite2D.flip_h = linear_velocity.x > 0
 	$DetectionArea.scale.x = -(int(linear_velocity.x > 0) - 0.5) * 2
-	
+	$HurtBox.scale.x = -(int(linear_velocity.x > 0) - 0.5) * 2
 
 func _on_detection_area_body_entered(body):
 	print("body entered")

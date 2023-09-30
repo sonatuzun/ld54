@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dok24ebtjyp1e"]
+
+[ext_resource type="Script" path="res://Link.gd" id="1_ks5dt"]
+[ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://pngegg.png" id="2_sogy7"]
+[ext_resource type="PackedScene" uid="uid://bajwj251y7vvj" path="res://Wrench.tscn" id="3_xm1sh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
+radius = 39.0
+height = 128.0
+
+[node name="Link" type="RigidBody2D"]
+mass = 25.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_ks5dt")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../Wrench")
+node_b = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sogy7")
+hframes = 10
+vframes = 8
+
+[node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 7)
+shape = SubResource("CapsuleShape2D_be8bv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

@@ -84,7 +84,8 @@ func HandleSpriteFrame(delta, isMoving, spriteRow):
 
 func HandleWrenchRotation():
 	var mousePosition = get_viewport().get_mouse_position()
-	var mouseRelativePosition = (mousePosition - position)
+	var screenCenter = get_viewport().size / 2.0
+	var mouseRelativePosition = (mousePosition - screenCenter)
 	var targetWrenchAngel = -mouseRelativePosition.angle_to(Vector2.LEFT)
 	targetWrenchAngel += 1.25 * PI + PI
 	var currentWrenchAngle = $Wrench.rotation

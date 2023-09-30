@@ -1,19 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://ql0akrfqq5ue"]
+[gd_scene load_steps=15 format=3 uid="uid://ql0akrfqq5ue"]
 
 [ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://pngegg.png" id="2_tn02e"]
 [ext_resource type="Script" path="res://Link.gd" id="3_ekxpu"]
 [ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://pngegg(1).png" id="3_qsww3"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://Rock.tscn" id="4_34wwx"]
 [ext_resource type="Texture2D" uid="uid://dfciiut45ubym" path="res://Pipes.png" id="5_skrtb"]
+[ext_resource type="Script" path="res://scripts/components/HealtComponent.gd" id="6_uamei"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="7_2bqr2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp54p"]
 bounce = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3sj7"]
-size = Vector2(35.1524, 198.029)
+size = Vector2(78.1078, 237.41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sxept"]
-radius = 50.63
+radius = 61.869
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
 radius = 39.0
@@ -297,17 +299,19 @@ angular_damp = 10.0
 
 [node name="Wrench" type="Sprite2D" parent="Link/Wrench"]
 show_behind_parent = true
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_qsww3")
 offset = Vector2(200, -200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Link/Wrench"]
-position = Vector2(58, -60)
-rotation = 0.811578
+position = Vector2(58.689, -57.0159)
+rotation = 0.767945
+scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_y3sj7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Link/Wrench"]
-position = Vector2(166, -167)
+position = Vector2(117, -118)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_sxept")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Link"]
@@ -341,3 +345,10 @@ tile_set = SubResource("TileSet_cajom")
 cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(131068, 1, 1, 196604, 1, 1, 262140, 1, 1, 327676, 1, 1, 65532, 262145, 1, 65533, 65537, 1, 65534, 65537, 1, 393212, 196609, 1, 393213, 65537, 1, 393214, 65537, 1, 393215, 65537, 1, 327680, 65537, 1, 327681, 131073, 1, 262145, 655361, 1, 196609, 1, 1, 262144, 65537, 1, 327679, 65537, 1, 327678, 196609, 1, 262142, 1, 1, 196606, 262145, 1, 196607, 65537, 1, 131072, 65537, 1, 131073, 327681, 1)
+
+[node name="HealtComponent" type="Node2D" parent="."]
+script = ExtResource("6_uamei")
+MAX_HEALTT = 50
+
+[node name="HitboxComponent" type="Node2D" parent="."]
+script = ExtResource("7_2bqr2")

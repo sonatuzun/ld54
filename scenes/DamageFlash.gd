@@ -5,6 +5,7 @@ const SINGLE_FLASH_DURATION = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	material = material.duplicate()
 	_shaderMaterial = material
 	pass # Replace with function body.
 

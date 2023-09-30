@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=9 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://scenes/Rock.tscn" id="1_yqn74"]
@@ -6,26 +6,10 @@
 [ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
 [ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
-[ext_resource type="Texture2D" uid="uid://cfqy67lrkom3" path="res://unpaintedRichulhu.png" id="7_ckf84"]
-[ext_resource type="Script" path="res://scenes/Monster.gd" id="7_rkem4"]
-[ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="8_v524w"]
-[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="9_5oh0v"]
-[ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="10_n7qiq"]
-[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="10_s7xso"]
+[ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="7_df86e"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdqya"]
-shader = ExtResource("8_v524w")
-shader_parameter/isEnabled = false
-shader_parameter/paintColor = Color(1, 1, 1, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rqou2"]
-radius = 65.0692
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qw7oo"]
-radius = 100.125
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gec4l"]
-radius = 345.036
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
+bounce = 0.5
 
 [node name="World" type="Node2D"]
 
@@ -69,49 +53,29 @@ position = Vector2(72, 699)
 [node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
 position = Vector2(132, 108)
 
-[node name="Monster" type="RigidBody2D" parent="."]
-position = Vector2(309, 575)
-mass = 10.0
-gravity_scale = 0.0
-lock_rotation = true
-linear_damp = 4.0
-script = ExtResource("7_rkem4")
+[node name="Monster4" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(2472, 4600)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="Sprite2D" type="Sprite2D" parent="Monster"]
-material = SubResource("ShaderMaterial_kdqya")
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_ckf84")
-script = ExtResource("10_n7qiq")
+[node name="Monster3" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(649, -177)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster"]
-visible = false
-position = Vector2(-7, -32)
-shape = SubResource("CircleShape2D_rqou2")
+[node name="Monster2" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(1007, 940)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="HitboxComponent" type="Area2D" parent="Monster" node_paths=PackedStringArray("hpComponent")]
-visible = false
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_5oh0v")
-hpComponent = NodePath("../HpComponent")
+[node name="Monster" parent="." instance=ExtResource("7_df86e")]
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/HitboxComponent"]
-position = Vector2(-6, -29)
-shape = SubResource("CircleShape2D_qw7oo")
-
-[node name="HpComponent" type="Node2D" parent="Monster"]
-script = ExtResource("10_s7xso")
-INITIAL_HP = 50
-
-[node name="DetectionArea" type="Area2D" parent="Monster"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster/DetectionArea"]
-position = Vector2(-194, -7)
-shape = SubResource("CircleShape2D_gec4l")
+[node name="Monster" parent="Monster" instance=ExtResource("7_df86e")]
+position = Vector2(1107, -598)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.607843, 0.607843, 0.607843, 1)
-
-[connection signal="damageTaken" from="Monster/HpComponent" to="Monster/Sprite2D" method="flash"]
-[connection signal="body_entered" from="Monster/DetectionArea" to="Monster" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Monster/DetectionArea" to="Monster" method="_on_detection_area_body_exited"]

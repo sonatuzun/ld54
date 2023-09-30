@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var _faceDirection := Vector2.DOWN
 var _spriteProgress := 0.0
-const BASE_MOVEMENT_SPEED = 80000
+@export var BASE_MOVEMENT_SPEED := 200000
 const IDLE_ANIMATION_SPEED = 4
 const RUNNING_ANIMATION_SPEED = 16
 var _speedMultiplier = 1

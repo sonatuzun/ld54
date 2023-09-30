@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ql0akrfqq5ue"]
+[gd_scene load_steps=11 format=3 uid="uid://ql0akrfqq5ue"]
 
 [ext_resource type="PackedScene" uid="uid://dok24ebtjyp1e" path="res://player.tscn" id="1_toelm"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://Rock.tscn" id="4_34wwx"]
 [ext_resource type="Texture2D" uid="uid://dfciiut45ubym" path="res://Pipes.png" id="5_skrtb"]
+[ext_resource type="PackedScene" uid="uid://wyssovsvdlxc" path="res://Football.tscn" id="6_iwuaw"]
 [ext_resource type="Script" path="res://scripts/components/HealtComponent.gd" id="6_uamei"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="7_2bqr2"]
 
@@ -258,6 +259,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8i5kn")
 sources/1 = SubResource("TileSetAtlasSource_g2n87")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fihn7"]
+bounce = 0.8
+
 [node name="MainScene" type="Node2D"]
 
 [node name="Link" parent="." instance=ExtResource("1_toelm")]
@@ -291,3 +295,7 @@ MAX_HEALTT = 50
 
 [node name="HitboxComponent" type="Node2D" parent="."]
 script = ExtResource("7_2bqr2")
+
+[node name="Football" parent="." instance=ExtResource("6_iwuaw")]
+position = Vector2(189, 31)
+physics_material_override = SubResource("PhysicsMaterial_fihn7")

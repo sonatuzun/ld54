@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://f3batk56mcjm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp54p"]
+bounce = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3sj7"]
+size = Vector2(78.1078, 237.41)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxept"]
+radius = 61.869
+
+[node name="Wrench" type="RigidBody2D"]
+show_behind_parent = true
+physics_material_override = SubResource("PhysicsMaterial_yp54p")
+gravity_scale = 0.0
+angular_damp = 10.0
+
+[node name="Wrench" type="Sprite2D" parent="."]
+show_behind_parent = true
+scale = Vector2(0.35, 0.35)
+offset = Vector2(200, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58.689, -57.0159)
+rotation = 0.767945
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_y3sj7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(117, -118)
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_sxept")

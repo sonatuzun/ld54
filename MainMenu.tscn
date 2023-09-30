@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="4_k2s43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jdd13"]
-render_priority = 0
 shader = ExtResource("3_uqfsb")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 1.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

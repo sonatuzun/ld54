@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjw4eimv3kyko"
-path="res://.godot/imported/pngegg.png-d1614680caa48b8bdb34e18d357f0fbb.ctex"
+uid="uid://jdlst2d3sy0p"
+path="res://.godot/imported/football.png-e37d7f8226e4119f817b28e0d848d881.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pngegg.png"
-dest_files=["res://.godot/imported/pngegg.png-d1614680caa48b8bdb34e18d357f0fbb.ctex"]
+source_file="res://assets/football.png"
+dest_files=["res://.godot/imported/football.png-e37d7f8226e4119f817b28e0d848d881.ctex"]
 
 [params]
 

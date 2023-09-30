@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://djthoc3qhqnvk"]
 
-[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="1_vwcr7"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="1_vwcr7"]
 [ext_resource type="Script" path="res://scripts/components/HealtComponent.gd" id="2_prhhm"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_xas7y"]
 

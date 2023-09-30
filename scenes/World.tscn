@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8a0mwsd85xfp"]
+
+[ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
+[ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://scenes/Rock.tscn" id="1_yqn74"]
+[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="3_civsd"]
+[ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(527, 312)
+scale = Vector2(1.205, 1.205)
+texture = ExtResource("3_civsd")
+
+[node name="Link" parent="." instance=ExtResource("1_co5tl")]
+position = Vector2(510, 312)
+
+[node name="Rock" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(809, -47)
+
+[node name="Rock2" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1028, 569)
+
+[node name="Rock3" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(309, 575)
+
+[node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
+position = Vector2(132, 108)

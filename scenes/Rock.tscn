@@ -1,17 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://30wgs80q77rc"]
 
-[ext_resource type="Texture2D" uid="uid://chsx77q4ivfjk" path="res://pngegg(2).png" id="1_jahpc"]
+[ext_resource type="Texture2D" uid="uid://chsx77q4ivfjk" path="res://assets/rock.png" id="1_de8ks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvf58"]
 size = Vector2(180, 80)
 
-[node name="StaticBody2D" type="StaticBody2D"]
-position = Vector2(307, 346)
+[node name="Rock" type="StaticBody2D"]
 metadata/_edit_group_ = true
 
-[node name="Pngegg(2)" type="Sprite2D" parent="."]
+[node name="Rock" type="Sprite2D" parent="."]
 scale = Vector2(0.446875, 0.436719)
-texture = ExtResource("1_jahpc")
+texture = ExtResource("1_de8ks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tvf58")

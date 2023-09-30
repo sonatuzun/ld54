@@ -9,7 +9,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_hitbox_area_entered(area):
+func _on_trigger(area):
 	if (area is HitboxComponent):
 		print("weapon hit a Hitbox")
 		area.damage(WEAPON_DAMAGE)

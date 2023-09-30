@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bk3vad3bglhd4" path="res://MinimalUI.tres" id="1_muybm"]
 [ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://Untitled_Artwork.png" id="2_th083"]
 [ext_resource type="Shader" path="res://FOV.gdshader" id="3_uqfsb"]
-[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="4_k2s43"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="4_k2s43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jdd13"]
 shader = ExtResource("3_uqfsb")

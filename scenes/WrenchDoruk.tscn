@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://fhg75rjc8nvb"]
 
-[ext_resource type="Script" path="res://Weapon.gd" id="1_j8txa"]
-[ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://pngegg(1).png" id="2_u53vb"]
+[ext_resource type="Script" path="res://scripts/Weapon.gd" id="1_j8txa"]
+[ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://assets/wretch.png" id="2_u53vb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp54p"]
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_foyyf"]
-radius = 32.5
+radius = 29.0172
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3sj7"]
 size = Vector2(78.1078, 237.41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sxept"]
-radius = 34.8282
+radius = 38.1826
 
 [node name="Weapon" type="RigidBody2D"]
 show_behind_parent = true
@@ -29,9 +29,8 @@ texture = ExtResource("2_u53vb")
 offset = Vector2(200, -200)
 
 [node name="Head collider" type="CollisionShape2D" parent="."]
-position = Vector2(115, -115)
+position = Vector2(116, -116)
 shape = SubResource("CircleShape2D_foyyf")
-disabled = true
 
 [node name="Body collider" type="CollisionShape2D" parent="."]
 position = Vector2(58.689, -57.0159)
@@ -43,8 +42,10 @@ shape = SubResource("RectangleShape2D_y3sj7")
 position = Vector2(58.689, -57.0159)
 rotation = 0.767945
 collision_layer = 2
-collision_mask = 3
+collision_mask = 2
 
 [node name="Head hit collider" type="CollisionShape2D" parent="Hit trigger"]
 position = Vector2(0.25, -82)
 shape = SubResource("CircleShape2D_sxept")
+
+[connection signal="area_entered" from="Hit trigger" to="." method="_on_trigger"]

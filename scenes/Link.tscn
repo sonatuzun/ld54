@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg7d3ssaoh8nn"]
+[gd_scene load_steps=7 format=3 uid="uid://bg7d3ssaoh8nn"]
 
-[ext_resource type="Script" path="res://Link.gd" id="1_ks5dt"]
-[ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://pngegg.png" id="2_sogy7"]
-[ext_resource type="PackedScene" uid="uid://fhg75rjc8nvb" path="res://WrenchDoruk.tscn" id="3_xm1sh"]
-[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="4_es6qm"]
+[ext_resource type="Script" path="res://scripts/Link.gd" id="1_ks5dt"]
+[ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://assets/link_spritesheet.png" id="2_sogy7"]
+[ext_resource type="PackedScene" uid="uid://fhg75rjc8nvb" path="res://scenes/WrenchDoruk.tscn" id="3_xm1sh"]
 [ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
@@ -11,10 +10,8 @@ radius = 39.0
 height = 128.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akpqs"]
+render_priority = 0
 shader = ExtResource("4_qrecx")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 2.0
-shader_parameter/saturation = 1.0
 
 [node name="Link" type="RigidBody2D"]
 mass = 25.0
@@ -39,14 +36,14 @@ position = Vector2(-7, 7)
 shape = SubResource("CapsuleShape2D_be8bv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="FOVShader" type="Sprite2D" parent="."]
+visible = false
 z_index = 100
 material = SubResource("ShaderMaterial_akpqs")
 position = Vector2(-0.500015, -3.05176e-05)
 scale = Vector2(16.2109, 10.2812)
-texture = ExtResource("4_es6qm")

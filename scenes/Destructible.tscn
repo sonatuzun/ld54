@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://0p77vtdkd3ph"]
 
-[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="1_hqacm"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="1_hqacm"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="2_cuecx"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_s33vj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgsbi"]
-size = Vector2(277, 118)
+size = Vector2(117, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coapa"]
-size = Vector2(138, 136)
+size = Vector2(140, 135)
 
 [node name="Box (StaticBody2D)" type="StaticBody2D"]
 position = Vector2(-228, -234)
@@ -17,7 +17,7 @@ position = Vector2(-228, -234)
 texture = ExtResource("1_hqacm")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(79.5, -1)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_wgsbi")
 
 [node name="HpComponent" type="Node2D" parent="."]
@@ -31,5 +31,5 @@ script = ExtResource("3_s33vj")
 hpComponent = NodePath("../HpComponent")
 
 [node name="Hit Detection Area" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(1, -1)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_coapa")

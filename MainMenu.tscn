@@ -1,15 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://deb6nt8xlo5ji"]
 
 [ext_resource type="Theme" uid="uid://bk3vad3bglhd4" path="res://MinimalUI.tres" id="1_muybm"]
-[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://Untitled_Artwork.png" id="2_th083"]
+[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="2_th083"]
 [ext_resource type="Shader" path="res://FOV.gdshader" id="3_uqfsb"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="4_k2s43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jdd13"]
+render_priority = 0
 shader = ExtResource("3_uqfsb")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 1.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

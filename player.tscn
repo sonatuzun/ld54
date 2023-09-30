@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://d26nmcfcovc8v"]
+
+[ext_resource type="Script" path="res://Link.gd" id="1_ks5dt"]
+[ext_resource type="Texture2D" path="res://pngegg.png" id="2_sogy7"]
+[ext_resource type="PackedScene" uid="uid://dc7m61dgg4e0f" path="res://WrenchDoruk.tscn" id="3_xm1sh"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="4_es6qm"]
+[ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
+radius = 39.0
+height = 128.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akpqs"]
+shader = ExtResource("4_qrecx")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 1.0
+
+[node name="Link" type="RigidBody2D"]
+mass = 25.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_ks5dt")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../Wrench")
+node_b = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sogy7")
+hframes = 10
+vframes = 8
+
+[node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 7)
+shape = SubResource("CapsuleShape2D_be8bv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="FOVShader" type="Sprite2D" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_akpqs")
+position = Vector2(-0.500015, -3.05176e-05)
+scale = Vector2(16.2109, 10.2812)
+texture = ExtResource("4_es6qm")

@@ -2,9 +2,9 @@ extends RigidBody2D
 
 var _faceDirection := Vector2.DOWN
 var _spriteProgress := 0.0
-const BASE_MOVEMENT_SPEED = 80000
+const BASE_MOVEMENT_SPEED = 140000
 const IDLE_ANIMATION_SPEED = 4
-const RUNNING_ANIMATION_SPEED = 16
+const RUNNING_ANIMATION_SPEED = 0.02
 var _speedMultiplier = 1
 var _velocity = Vector2()
 const BASE_VELOCITY_LOSS = 0.1
@@ -74,7 +74,7 @@ func SelectSpriteRow(isMoving : bool) -> int:
 func HandleSpriteFrame(delta, isMoving, spriteRow):
 	var deltaProgress = 0
 	if isMoving:
-		deltaProgress = delta * RUNNING_ANIMATION_SPEED * _speedMultiplier
+		deltaProgress = delta * RUNNING_ANIMATION_SPEED * _speedMultiplier * linear_velocity.length()
 	else:
 		deltaProgress = delta * IDLE_ANIMATION_SPEED * _speedMultiplier
 	_spriteProgress += deltaProgress

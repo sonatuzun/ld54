@@ -52,12 +52,6 @@ inertia = 0.0
 position = Vector2(-7, 7)
 shape = SubResource("CapsuleShape2D_be8bv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
 [node name="FOVShader" type="Sprite2D" parent="."]
 visible = false
 z_index = 100
@@ -76,3 +70,4 @@ hpComponent = NodePath("../HpComponent")
 shape = SubResource("CircleShape2D_dqxw8")
 
 [connection signal="damageTaken" from="HpComponent" to="Sprite" method="flash"]
+[connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]

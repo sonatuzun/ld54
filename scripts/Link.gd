@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal playerDied
+
 var _faceDirection := Vector2.DOWN
 var _spriteProgress := 0.0
 const BASE_MOVEMENT_SPEED = 140000
@@ -104,3 +106,14 @@ func _physics_process(delta):
 	var spriteRow = SelectSpriteRow(isMoving)
 	HandleSpriteFrame(delta, isMoving, spriteRow)
 	HandleWrenchRotation()
+
+
+func _on_hp_component_hp_reached_zero():
+	await get_tree().create_timer(0.2).timeout
+	visible = false
+	$HitboxComponent/CollisionShape2D.disabled = true
+	if $Wrench:
+		$Wrench.queue_free()
+	set_physics_process(false)
+	emit_signal("playerDied")
+	pass # Replace with function body.

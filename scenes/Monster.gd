@@ -39,3 +39,8 @@ func _on_detection_area_body_exited(body):
 		_player = null
 		pass
 	pass # Replace with function body.
+
+
+func _on_hp_component_hp_reached_zero():
+	await get_tree().create_timer(0.2).timeout
+	queue_free()

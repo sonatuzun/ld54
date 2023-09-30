@@ -68,12 +68,12 @@ position = Vector2(1007, 940)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="Monster" parent="." instance=ExtResource("7_df86e")]
+[node name="Monster5" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(1416, -23)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
-[node name="Monster" parent="Monster" instance=ExtResource("7_df86e")]
-position = Vector2(1107, -598)
+[node name="Monster" parent="." instance=ExtResource("7_df86e")]
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bkf25")
 

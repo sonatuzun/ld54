@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://djthoc3qhqnvk"]
+
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="1_ophmn"]
+[ext_resource type="Script" path="res://scripts/components/HealtComponent.gd" id="2_2835n"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_2lvh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maa7w"]
+size = Vector2(124, 125)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yp2qd"]
+radius = 79.0
+height = 174.0
+
+[node name="Box" type="StaticBody2D"]
+position = Vector2(-127, -167)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_maa7w")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_ophmn")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+position = Vector2(127, 167)
+script = ExtResource("2_2835n")
+MAX_HEALT = 30.0
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_2lvh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_yp2qd")
+
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

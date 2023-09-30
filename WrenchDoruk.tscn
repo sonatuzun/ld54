@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fhg75rjc8nvb"]
 
-[ext_resource type="Script" path="res://Weapon.gd" id="1_cum5l"]
-[ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://pngegg(1).png" id="1_rd7d7"]
+[ext_resource type="Script" path="res://Weapon.gd" id="1_j8txa"]
+[ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://pngegg(1).png" id="2_u53vb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp54p"]
 bounce = 0.2
@@ -12,17 +12,17 @@ size = Vector2(78.1078, 237.41)
 [sub_resource type="CircleShape2D" id="CircleShape2D_sxept"]
 radius = 61.869
 
-[node name="Wrench" type="RigidBody2D"]
+[node name="WrenchDoruk" type="RigidBody2D"]
 show_behind_parent = true
 physics_material_override = SubResource("PhysicsMaterial_yp54p")
 gravity_scale = 0.0
 angular_damp = 10.0
-script = ExtResource("1_cum5l")
+script = ExtResource("1_j8txa")
 
-[node name="Wrench" type="Sprite2D" parent="."]
+[node name="WrenchIcon" type="Sprite2D" parent="."]
 show_behind_parent = true
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("1_rd7d7")
+texture = ExtResource("2_u53vb")
 offset = Vector2(200, -200)
 
 [node name="Body Collider" type="CollisionShape2D" parent="."]

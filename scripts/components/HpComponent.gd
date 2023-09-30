@@ -1,6 +1,8 @@
 extends Node2D
 class_name HpComponent
 
+signal damageTaken
+
 @export var INITIAL_HP := 30
 var curr_hp = 0.0
 
@@ -16,5 +18,7 @@ func _process(delta):
 
 func take_damage(amount):
 	curr_hp -= amount
+	emit_signal("damageTaken")
 	if(curr_hp <= 0):
+		await get_tree().create_timer(0.2).timeout
 		get_parent().queue_free()

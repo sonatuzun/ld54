@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://0p77vtdkd3ph"]
+[gd_scene load_steps=9 format=3 uid="uid://0p77vtdkd3ph"]
 
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="1_hqacm"]
+[ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="1_ra734"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="2_cuecx"]
+[ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="3_po14v"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_s33vj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqoty"]
+shader = ExtResource("1_ra734")
+shader_parameter/isEnabled = false
+shader_parameter/paintColor = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgsbi"]
 size = Vector2(117, 118)
@@ -14,7 +21,9 @@ size = Vector2(140, 135)
 position = Vector2(-228, -234)
 
 [node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oqoty")
 texture = ExtResource("1_hqacm")
+script = ExtResource("3_po14v")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -33,3 +42,5 @@ hpComponent = NodePath("../HpComponent")
 [node name="Hit Detection Area" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_coapa")
+
+[connection signal="damageTaken" from="HpComponent" to="Icon" method="flash"]

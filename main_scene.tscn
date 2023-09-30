@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://ql0akrfqq5ue"]
+
+[ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://pngegg.png" id="2_tn02e"]
+[ext_resource type="Script" path="res://Link.gd" id="3_ekxpu"]
+[ext_resource type="Texture2D" uid="uid://cjhs6qi1otjuc" path="res://pngegg(1).png" id="3_qsww3"]
+[ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://Rock.tscn" id="4_34wwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3sj7"]
+size = Vector2(35.1524, 198.029)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxept"]
+radius = 50.63
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
+radius = 39.0
+height = 128.0
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Link" type="RigidBody2D" parent="."]
+mass = 15.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("3_ekxpu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Link"]
+node_a = NodePath("../Wrench")
+node_b = NodePath("..")
+
+[node name="Sprite" type="Sprite2D" parent="Link"]
+texture = ExtResource("2_tn02e")
+hframes = 10
+vframes = 8
+
+[node name="Wrench" type="RigidBody2D" parent="Link"]
+show_behind_parent = true
+gravity_scale = 0.0
+angular_damp = 2.0
+
+[node name="Wrench" type="Sprite2D" parent="Link/Wrench"]
+show_behind_parent = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qsww3")
+offset = Vector2(200, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link/Wrench"]
+position = Vector2(58, -60)
+rotation = 0.811578
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_y3sj7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Link/Wrench"]
+position = Vector2(166, -167)
+shape = SubResource("CircleShape2D_sxept")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link"]
+position = Vector2(-7, 7)
+shape = SubResource("CapsuleShape2D_be8bv")
+
+[node name="Rock2" parent="." instance=ExtResource("4_34wwx")]
+position = Vector2(547, 542)
+
+[node name="Rock3" parent="." instance=ExtResource("4_34wwx")]
+position = Vector2(777, 117)
+
+[node name="Rock5" parent="." instance=ExtResource("4_34wwx")]
+position = Vector2(1901, 214)
+
+[node name="Rock4" parent="." instance=ExtResource("4_34wwx")]
+position = Vector2(73, 329)
+
+[node name="Rock" parent="." instance=ExtResource("4_34wwx")]
+position = Vector2(395, 194)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://xeybs6lrp0yj"]
+
+[ext_resource type="Theme" uid="uid://cmgg44r3ajkh6" path="res://MinimalUI.tres" id="1_muybm"]
+[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://Untitled_Artwork.png" id="2_th083"]
+[ext_resource type="Shader" path="res://FOV.gdshader" id="3_uqfsb"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="4_k2s43"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdd13"]
+shader = ExtResource("3_uqfsb")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_muybm")
+
+[node name="UntitledArtwork" type="Sprite2D" parent="."]
+position = Vector2(577, 323.5)
+scale = Vector2(0.601042, 0.602778)
+texture = ExtResource("2_th083")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 651.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "ENTER THE DEPTHS"
+
+[node name="FOVShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jdd13")
+position = Vector2(587, 340)
+scale = Vector2(9.5625, 5.70313)
+texture = ExtResource("4_k2s43")

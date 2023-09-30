@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dok24ebtjyp1e"]
+[gd_scene load_steps=8 format=3 uid="uid://dok24ebtjyp1e"]
 
 [ext_resource type="Script" path="res://Link.gd" id="1_ks5dt"]
 [ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://pngegg.png" id="2_sogy7"]
 [ext_resource type="PackedScene" uid="uid://bajwj251y7vvj" path="res://Wrench.tscn" id="3_xm1sh"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="4_es6qm"]
+[ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be8bv"]
 radius = 39.0
 height = 128.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akpqs"]
+shader = ExtResource("4_qrecx")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 1.0
 
 [node name="Link" type="RigidBody2D"]
 mass = 25.0
@@ -31,7 +39,14 @@ position = Vector2(-7, 7)
 shape = SubResource("CapsuleShape2D_be8bv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.8, 0.8)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="FOVShader" type="Sprite2D" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_akpqs")
+position = Vector2(-3.50007, -0.499943)
+scale = Vector2(30.2266, 17.1016)
+texture = ExtResource("4_es6qm")

@@ -47,6 +47,6 @@ position_smoothing_speed = 10.0
 [node name="FOVShader" type="Sprite2D" parent="."]
 z_index = 100
 material = SubResource("ShaderMaterial_akpqs")
-position = Vector2(-3.50007, -0.499943)
-scale = Vector2(30.2266, 17.1016)
+position = Vector2(-0.500015, -3.05176e-05)
+scale = Vector2(16.2109, 10.2812)
 texture = ExtResource("4_es6qm")

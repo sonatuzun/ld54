@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://xeybs6lrp0yj"]
+[gd_scene load_steps=6 format=3 uid="uid://deb6nt8xlo5ji"]
 
-[ext_resource type="Theme" uid="uid://cmgg44r3ajkh6" path="res://MinimalUI.tres" id="1_muybm"]
+[ext_resource type="Theme" uid="uid://bk3vad3bglhd4" path="res://MinimalUI.tres" id="1_muybm"]
 [ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://Untitled_Artwork.png" id="2_th083"]
 [ext_resource type="Shader" path="res://FOV.gdshader" id="3_uqfsb"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://icon.svg" id="4_k2s43"]

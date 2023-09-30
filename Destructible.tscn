@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="3_s33vj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgsbi"]
-size = Vector2(119, 118)
+size = Vector2(277, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coapa"]
 size = Vector2(138, 136)
@@ -17,7 +17,7 @@ position = Vector2(-228, -234)
 texture = ExtResource("1_hqacm")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
+position = Vector2(79.5, -1)
 shape = SubResource("RectangleShape2D_wgsbi")
 
 [node name="HpComponent" type="Node2D" parent="."]

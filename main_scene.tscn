@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://player.tscn" id="1_toelm"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://Rock.tscn" id="4_34wwx"]
-[ext_resource type="PackedScene" path="res://Destructible.tscn" id="5_bkr23"]
+[ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://Destructible.tscn" id="5_bkr23"]
 [ext_resource type="Texture2D" uid="uid://dfciiut45ubym" path="res://Pipes.png" id="5_skrtb"]
-[ext_resource type="PackedScene" uid="uid://wyssovsvdlxc" path="res://Football.tscn" id="6_iwuaw"]
+[ext_resource type="PackedScene" uid="uid://wyssovsvdlxc" path="res://scenes/Football.tscn" id="6_iwuaw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8i5kn"]
 

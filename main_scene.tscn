@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ql0akrfqq5ue"]
+[gd_scene load_steps=10 format=3 uid="uid://ql0akrfqq5ue"]
 
-[ext_resource type="PackedScene" uid="uid://dok24ebtjyp1e" path="res://player.tscn" id="1_toelm"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_toelm"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://Rock.tscn" id="4_34wwx"]
+[ext_resource type="PackedScene" uid="uid://c8hctffmpo1ca" path="res://Destructible.tscn" id="5_bkr23"]
 [ext_resource type="Texture2D" uid="uid://dfciiut45ubym" path="res://Pipes.png" id="5_skrtb"]
-[ext_resource type="PackedScene" uid="uid://wyssovsvdlxc" path="res://Football.tscn" id="6_iwuaw"]
-[ext_resource type="Script" path="res://scripts/components/HealtComponent.gd" id="6_uamei"]
-[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="7_2bqr2"]
+[ext_resource type="PackedScene" path="res://Football.tscn" id="6_iwuaw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8i5kn"]
 
@@ -289,13 +288,9 @@ cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(131068, 1, 1, 196604, 1, 1, 262140, 1, 1, 327676, 1, 1, 65532, 262145, 1, 65533, 65537, 1, 65534, 65537, 1, 393212, 196609, 1, 393213, 65537, 1, 393214, 65537, 1, 393215, 65537, 1, 327680, 65537, 1, 327681, 131073, 1, 262145, 655361, 1, 196609, 1, 1, 262144, 65537, 1, 327679, 65537, 1, 327678, 196609, 1, 262142, 1, 1, 196606, 262145, 1, 196607, 65537, 1, 131072, 65537, 1, 131073, 327681, 1)
 
-[node name="HealtComponent" type="Node2D" parent="."]
-script = ExtResource("6_uamei")
-MAX_HEALTT = 50
-
-[node name="HitboxComponent" type="Node2D" parent="."]
-script = ExtResource("7_2bqr2")
-
 [node name="Football" parent="." instance=ExtResource("6_iwuaw")]
 position = Vector2(189, 31)
 physics_material_override = SubResource("PhysicsMaterial_fihn7")
+
+[node name="Box" parent="." instance=ExtResource("5_bkr23")]
+position = Vector2(-363, -284)

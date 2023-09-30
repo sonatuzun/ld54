@@ -86,10 +86,10 @@ func HandleWrenchRotation():
 	var mousePosition = get_viewport().get_mouse_position()
 	var screenCenter = get_viewport().size / 2.0
 	var mouseRelativePosition = (mousePosition - screenCenter)
-	var targetWrenchAngel = -mouseRelativePosition.angle_to(Vector2.LEFT)
-	targetWrenchAngel += 1.25 * PI + PI
+	var targetWrenchAngle = -mouseRelativePosition.angle_to(Vector2.LEFT)
+	targetWrenchAngle += 1.25 * PI + PI
 	var currentWrenchAngle = $Wrench.rotation
-	var wrenchAngleDiff = fmod(targetWrenchAngel - currentWrenchAngle, 2 * PI) - PI
+	var wrenchAngleDiff = fmod(targetWrenchAngle - currentWrenchAngle, 2 * PI) - PI
 	$Wrench.apply_torque_impulse(wrenchAngleDiff * 12000)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

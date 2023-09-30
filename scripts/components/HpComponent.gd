@@ -2,10 +2,11 @@ extends Node2D
 class_name HpComponent
 
 @export var INITIAL_HP := 30
-var curr_hp = INITIAL_HP
+var curr_hp = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	curr_hp = INITIAL_HP
 	pass # Replace with function body.
 
 

@@ -14,7 +14,8 @@ render_priority = 0
 shader = ExtResource("4_qrecx")
 
 [node name="Link" type="RigidBody2D"]
-mass = 25.0
+mass = 33.0
+inertia = 17.78
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 5.0
@@ -30,6 +31,8 @@ hframes = 10
 vframes = 8
 
 [node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
+mass = 3.0
+inertia = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 7)

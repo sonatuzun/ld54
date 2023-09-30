@@ -17,6 +17,7 @@ radius = 38.1826
 
 [node name="Weapon" type="RigidBody2D"]
 show_behind_parent = true
+inertia = 7.5
 physics_material_override = SubResource("PhysicsMaterial_yp54p")
 gravity_scale = 0.0
 angular_damp = 10.0

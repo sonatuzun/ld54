@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_wgsbi")
 
 [node name="HpComponent" type="Node2D" parent="."]
 script = ExtResource("2_cuecx")
-INITIAL_HP = 50
+INITIAL_HP = 100
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent")]
 collision_layer = 2

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddqotdis3mer5"]
+
+[ext_resource type="Script" path="res://scripts/DenitoEnemy.gd" id="1_npi5o"]
+[ext_resource type="Texture2D" uid="uid://jdlst2d3sy0p" path="res://assets/football.png" id="2_x1po0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgp0g"]
+radius = 1223.05
+
+[node name="DenitoEnemy" type="CharacterBody2D" node_paths=PackedStringArray("navigationAgent")]
+scale = Vector2(0.01, 0.01)
+script = ExtResource("1_npi5o")
+navigationAgent = NodePath("NavigationAgent2D")
+
+[node name="EnemyImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_x1po0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xgp0g")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

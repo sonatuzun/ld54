@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cimo57jsee6o1"]
+
+[ext_resource type="PackedScene" uid="uid://ddqotdis3mer5" path="res://scenes/DenitoPrefabs/denito_enemy.tscn" id="1_py1j1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0vcd7"]
+vertices = PackedVector2Array(32, 620, 33, 84, 163, 92, 97, 432, 1118, 530, 1118, 622, 97, 530, 1095, 92, 1095, 309, 382, 309, 382, 383, 533, 383, 533, 432)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 0, 6), PackedInt32Array(2, 7, 8, 9), PackedInt32Array(10, 11, 12, 3), PackedInt32Array(9, 10, 3, 2), PackedInt32Array(0, 3, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(163, 92, 1095, 92, 1095, 309, 382, 309, 382, 383, 533, 383, 533, 432, 97, 432, 97, 530, 1118, 530, 1118, 622, 32, 620, 33, 84)])
+
+[node name="DenitoScene" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_0vcd7")
+
+[node name="NavigationTarget" type="Marker2D" parent="."]
+position = Vector2(644, 582)
+
+[node name="DenitoEnemy" parent="." node_paths=PackedStringArray("movementTarget") instance=ExtResource("1_py1j1")]
+position = Vector2(974, 203)
+movementTarget = NodePath("../NavigationTarget")

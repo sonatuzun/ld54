@@ -43,7 +43,7 @@ scale = Vector2(1.205, 1.205)
 texture = ExtResource("3_civsd")
 
 [node name="Link" parent="." groups=["Player"] instance=ExtResource("1_co5tl")]
-position = Vector2(510, 312)
+position = Vector2(457, 311)
 mass = 22.05
 inertia = 0.01
 metadata/_edit_group_ = true
@@ -86,6 +86,15 @@ texture = ExtResource("9_u2da5")
 [node name="Rock" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(809, -47)
 
+[node name="Rock4" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(994, -160)
+
+[node name="Rock5" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1154, 164)
+
+[node name="Rock6" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1371, -130)
+
 [node name="Rock2" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(1028, 569)
 
@@ -93,31 +102,7 @@ position = Vector2(1028, 569)
 position = Vector2(72, 699)
 
 [node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
-position = Vector2(132, 108)
-
-[node name="Monster4" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(2472, 4600)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster3" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(649, -177)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster2" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(1007, 940)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster5" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(1416, -23)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster" parent="." instance=ExtResource("7_df86e")]
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
+position = Vector2(140, 110)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.164706, 0.164706, 0.164706, 1)
@@ -142,5 +127,14 @@ motion_scale = Vector2(2, 2)
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="PB"]
 scale = Vector2(3, 3)
 motion_scale = Vector2(2.5, 2.5)
+
+[node name="Enemy" parent="." instance=ExtResource("11_iu47a")]
+position = Vector2(1546, 436)
+
+[node name="GuardAreaManager" type="Node2D" parent="." groups=["GuardAreaManager"]]
+script = ExtResource("11_v7d4t")
+
+[node name="guard area 1" parent="GuardAreaManager" instance=ExtResource("11_hnwq3")]
+position = Vector2(977, -22)
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

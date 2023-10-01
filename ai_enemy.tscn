@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnhg1yivjbkv2"]
+[gd_scene load_steps=15 format=3 uid="uid://cnhg1yivjbkv2"]
 
 [ext_resource type="Script" path="res://MonsterAI.gd" id="1_ewmj3"]
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="1_mt2ky"]
@@ -20,6 +20,9 @@ radius = 65.0692
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qw7oo"]
 radius = 100.125
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkcbv"]
+bg_color = Color(0.698039, 0.270588, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gec4l"]
 radius = 185.2
@@ -65,12 +68,20 @@ hpComponent = NodePath("../HpComponent")
 position = Vector2(-6, -29)
 shape = SubResource("CircleShape2D_qw7oo")
 
-[node name="HpComponent" type="Node2D" parent="."]
-position = Vector2(11, 33)
+[node name="HpComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("7_jbjle")
+healthBar = NodePath("HealthBar")
 INITIAL_HP = 80
 
+[node name="HealthBar" type="ProgressBar" parent="HpComponent"]
+offset_left = -46.0
+offset_top = -115.0
+offset_right = 62.0
+offset_bottom = -88.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_lkcbv")
+
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(11, 33)
 
 [node name="detection area" type="CollisionShape2D" parent="DetectionArea"]

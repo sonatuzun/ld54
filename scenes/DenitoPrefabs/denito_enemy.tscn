@@ -18,3 +18,7 @@ texture = ExtResource("2_x1po0")
 shape = SubResource("CircleShape2D_xgp0g")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 20.0
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -29,8 +29,8 @@ func _physics_process(delta):
 	var direction: Vector2 = (nextPathPosition - currentAgentPosition).normalized()
 	var newVelocity: Vector2 = direction * movementSpeed
 	
-	velocity = newVelocity
-	move_and_slide()
+	navigationAgent.set_velocity(newVelocity)
+	
 
 func actor_setup():
 	await get_tree().physics_frame
@@ -39,3 +39,9 @@ func actor_setup():
 	
 func set_movement_target(targetPoint: Vector2):
 	navigationAgent.target_position = targetPoint
+	
+	
+
+func _on_navigation_agent_2d_velocity_computed(safeVelocity):
+	velocity = safeVelocity
+	move_and_slide()

@@ -68,7 +68,7 @@ shape = SubResource("CircleShape2D_qw7oo")
 [node name="HpComponent" type="Node2D" parent="."]
 position = Vector2(11, 33)
 script = ExtResource("7_jbjle")
-INITIAL_HP = 50
+INITIAL_HP = 80
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(11, 33)
@@ -78,5 +78,6 @@ position = Vector2(-112.575, -7)
 shape = SubResource("CircleShape2D_gec4l")
 
 [connection signal="damageTaken" from="HpComponent" to="enemy visuals" method="flash" flags=18]
+[connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

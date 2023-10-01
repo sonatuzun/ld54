@@ -116,25 +116,4 @@ script = ExtResource("9_2o7g0")
 [node name="PB" type="ParallaxBackground" parent="."]
 layer = 1
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="PB"]
-scale = Vector2(1.5, 1.5)
-motion_scale = Vector2(1.5, 1.5)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="PB"]
-scale = Vector2(2, 2)
-motion_scale = Vector2(2, 2)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="PB"]
-scale = Vector2(3, 3)
-motion_scale = Vector2(2.5, 2.5)
-
-[node name="Enemy" parent="." instance=ExtResource("11_iu47a")]
-position = Vector2(1546, 436)
-
-[node name="GuardAreaManager" type="Node2D" parent="." groups=["GuardAreaManager"]]
-script = ExtResource("11_v7d4t")
-
-[node name="guard area 1" parent="GuardAreaManager" instance=ExtResource("11_hnwq3")]
-position = Vector2(977, -22)
-
-[connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

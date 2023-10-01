@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=15 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
@@ -9,10 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
 [ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="7_df86e"]
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
+[ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
 bounce = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
+shader = ExtResource("9_38dcr")
+shader_parameter/tile_factor = 10.0
+shader_parameter/aspect_ratio = 0.5
+shader_parameter/texture_offset_scale = Vector2(0.2, 0.2)
+shader_parameter/texture_offset_height = 0.1
+shader_parameter/texture_offset_time_scale = 0.05
+shader_parameter/sine_time_scale = 0.03
+shader_parameter/sine_offset_scale = Vector2(0.4, 0.4)
+shader_parameter/sine_wave_size = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvax2"]
 shader = ExtResource("9_5pkl4")
@@ -35,7 +47,6 @@ inertia = 0.01
 metadata/_edit_group_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="Link"]
-zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -94,7 +105,13 @@ mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_bkf25")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.607843, 0.607843, 0.607843, 1)
+color = Color(0.164706, 0.164706, 0.164706, 1)
+
+[node name="WaterShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
 
 [node name="BrokenGlass" type="Sprite2D" parent="."]
 visible = false

@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnhg1yivjbkv2"]
+
+[ext_resource type="Script" path="res://MonsterAI.gd" id="1_ewmj3"]
+[ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="1_mt2ky"]
+[ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="2_jnhmm"]
+[ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="3_bym6l"]
+[ext_resource type="Texture2D" uid="uid://cfqy67lrkom3" path="res://unpaintedRichulhu.png" id="4_ty0ac"]
+[ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="5_if2tr"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="6_c4oit"]
+[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="7_jbjle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdqya"]
+shader = ExtResource("3_bym6l")
+shader_parameter/isEnabled = false
+shader_parameter/paintColor = Color(0, 0.819608, 0.819608, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqou2"]
+radius = 65.0692
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qw7oo"]
+radius = 100.125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gec4l"]
+radius = 185.2
+
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("state_m")]
+mass = 4.0
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_ewmj3")
+state_m = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_mt2ky")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_jnhmm")
+enemy = NodePath("../..")
+
+[node name="enemy visuals" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kdqya")
+position = Vector2(11, 33)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_ty0ac")
+script = ExtResource("5_if2tr")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(4, 1)
+shape = SubResource("CircleShape2D_rqou2")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent")]
+position = Vector2(11, 33)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_c4oit")
+hpComponent = NodePath("../HpComponent")
+
+[node name="hitbox" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-6, -29)
+shape = SubResource("CircleShape2D_qw7oo")
+
+[node name="HpComponent" type="Node2D" parent="."]
+position = Vector2(11, 33)
+script = ExtResource("7_jbjle")
+INITIAL_HP = 50
+
+[node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(11, 33)
+
+[node name="detection area" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-112.575, -7)
+shape = SubResource("CircleShape2D_gec4l")
+
+[connection signal="damageTaken" from="HpComponent" to="enemy visuals" method="flash" flags=18]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

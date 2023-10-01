@@ -12,7 +12,10 @@
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
 [ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
-[ext_resource type="PackedScene" uid="uid://doqn4bwky7stc" path="res://scenes/Fish.tscn" id="13_2vgrs"]
+[ext_resource type="Texture2D" uid="uid://bhgpf3btq27eq" path="res://assets/hamsi.png" id="10_6855o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
+bounce = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
 shader = ExtResource("9_38dcr")
@@ -31,9 +34,6 @@ shader_parameter/brightness = 1.0
 shader_parameter/contrast = 2.0
 shader_parameter/saturation = 1.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
-bounce = 0.5
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
 
@@ -49,6 +49,7 @@ inertia = 0.01
 metadata/_edit_group_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="Link"]
+zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -69,19 +70,6 @@ texture = ExtResource("5_syh7u")
 texture_scale = 15.0
 script = ExtResource("4_ahigo")
 ROTATION_SPEED = 0.5
-
-[node name="WaterShader" type="Sprite2D" parent="Link"]
-material = SubResource("ShaderMaterial_828q0")
-position = Vector2(-26, 29.5)
-scale = Vector2(19.7969, 11.8672)
-texture = ExtResource("9_u2da5")
-
-[node name="BrokenGlass" type="Sprite2D" parent="Link"]
-visible = false
-material = SubResource("ShaderMaterial_nvax2")
-position = Vector2(-26, 29.5)
-scale = Vector2(19.7969, 11.8672)
-texture = ExtResource("9_u2da5")
 
 [node name="Rock" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(809, -47)
@@ -123,24 +111,29 @@ physics_material_override = SubResource("PhysicsMaterial_bkf25")
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Fishes" type="Node2D" parent="."]
-position = Vector2(920, 368)
+position = Vector2(484, 341.5)
+scale = Vector2(1.669, 1)
 script = ExtResource("9_2o7g0")
 
-[node name="Fish" parent="Fishes" instance=ExtResource("13_2vgrs")]
+[node name="Fish" type="RigidBody2D" parent="Fishes"]
+linear_damp = 2.0
 
-[node name="PB" type="ParallaxBackground" parent="."]
-layer = 1
+[node name="Fish" type="Sprite2D" parent="Fishes/Fish"]
+position = Vector2(-289.994, -341.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_6855o")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="PB"]
-scale = Vector2(1.5, 1.5)
-motion_scale = Vector2(1.5, 1.5)
+[node name="WaterShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="PB"]
-scale = Vector2(2, 2)
-motion_scale = Vector2(2, 2)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="PB"]
-scale = Vector2(3, 3)
-motion_scale = Vector2(2.5, 2.5)
+[node name="BrokenGlass" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nvax2")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

@@ -4,7 +4,7 @@ var _overallPosition = Vector2()
 const X_RANGE = 500
 const Y_RANGE = 500
 const RATE = 0.5
-const FISH_COUNT = 1000
+const FISH_COUNT = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

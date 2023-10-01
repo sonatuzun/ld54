@@ -24,6 +24,8 @@ texture = ExtResource("1_jnkv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ct1tm")
+disabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_uwipc")

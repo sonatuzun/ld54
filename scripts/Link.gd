@@ -6,7 +6,7 @@ var _faceDirection := Vector2.DOWN
 var _spriteProgress := 0.0
 const BASE_MOVEMENT_SPEED = 140000
 const IDLE_ANIMATION_SPEED = 4
-const RUNNING_ANIMATION_SPEED = 0.02
+const RUNNING_ANIMATION_SPEED = 0.01
 var _speedMultiplier = 1
 var _velocity = Vector2()
 const BASE_VELOCITY_LOSS = 0.1
@@ -58,31 +58,28 @@ func HandleFaceDirection(moveDirection : Vector2):
 		_faceDirection = Vector2.LEFT
 	pass
 
-func SelectSpriteRow(isMoving : bool) -> int:
-	var spriteRow = 0
+func SelectSpriteSet(isMoving : bool) -> int:
+	var spriteSet = 0
 	if _faceDirection == Vector2.UP:
-		spriteRow = 2
+		spriteSet = 3
 	elif _faceDirection == Vector2.DOWN:
-		spriteRow = 0
+		spriteSet = 0
 	elif _faceDirection == Vector2.RIGHT:
-		spriteRow = 3
+		spriteSet = 2
 	elif _faceDirection == Vector2.LEFT:
-		spriteRow = 1
+		spriteSet = 1
 	pass
-	if isMoving:
-		spriteRow += 4
-	return spriteRow
+	return spriteSet
 
-func HandleSpriteFrame(delta, isMoving, spriteRow):
+func HandleSpriteFrame(delta, isMoving, spriteSet):
 	var deltaProgress = 0
 	if isMoving:
 		deltaProgress = delta * RUNNING_ANIMATION_SPEED * _speedMultiplier * linear_velocity.length()
+		_spriteProgress += deltaProgress
+		_spriteProgress = fmod(_spriteProgress, 3)
+		$Sprite.frame_coords.x = spriteSet * 3 + _spriteProgress
 	else:
-		deltaProgress = delta * IDLE_ANIMATION_SPEED * _speedMultiplier
-	_spriteProgress += deltaProgress
-	_spriteProgress = fmod(_spriteProgress, SPRITE_ROW_LIMITS[spriteRow])
-	$Sprite.frame_coords.y = spriteRow
-	$Sprite.frame_coords.x = _spriteProgress
+		$Sprite.frame_coords.x = spriteSet * 3
 
 func HandleWrenchRotation():
 	var mousePosition = get_viewport().get_mouse_position()
@@ -103,8 +100,8 @@ func _physics_process(delta):
 	HandleMovement(delta, moveDirection)
 	HandleFaceDirection(moveDirection)
 	var isMoving = moveDirection != Vector2()
-	var spriteRow = SelectSpriteRow(isMoving)
-	HandleSpriteFrame(delta, isMoving, spriteRow)
+	var spriteSet = SelectSpriteSet(isMoving)
+	HandleSpriteFrame(delta, isMoving, spriteSet)
 	HandleWrenchRotation()
 
 

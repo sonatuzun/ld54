@@ -20,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_postScale += delta
+	_postScale += delta / 1000
 	var scaleVector = Vector2(delta, delta)
 	$WeaponIcon.position = _weaponIconInitialPosition * _postScale
 	$HeadCollider.position = _headColliderInitialPosition * _postScale 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/Link.gd" id="1_ks5dt"]
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_sbp6y"]
-[ext_resource type="Texture2D" uid="uid://cjw4eimv3kyko" path="res://assets/link_spritesheet.png" id="2_sogy7"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="3_58lwe"]
+[ext_resource type="Texture2D" uid="uid://bxx8rvsx2r25t" path="res://assets/spritesheet.png" id="3_uc1jq"]
 [ext_resource type="PackedScene" uid="uid://fhg75rjc8nvb" path="res://scenes/WrenchDoruk.tscn" id="3_xm1sh"]
 [ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="5_iiegp"]
@@ -40,9 +40,8 @@ softness = 0.1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qnp2p")
-texture = ExtResource("2_sogy7")
-hframes = 10
-vframes = 8
+texture = ExtResource("3_uc1jq")
+hframes = 12
 script = ExtResource("3_58lwe")
 
 [node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]

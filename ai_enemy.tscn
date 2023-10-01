@@ -65,12 +65,19 @@ hpComponent = NodePath("../HpComponent")
 position = Vector2(-6, -29)
 shape = SubResource("CircleShape2D_qw7oo")
 
-[node name="HpComponent" type="Node2D" parent="."]
-position = Vector2(11, 33)
+[node name="HpComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("7_jbjle")
+healthBar = NodePath("HealthBar")
 INITIAL_HP = 80
 
+[node name="HealthBar" type="ProgressBar" parent="HpComponent"]
+offset_left = -46.0
+offset_top = -115.0
+offset_right = 62.0
+offset_bottom = -88.0
+
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(11, 33)
 
 [node name="detection area" type="CollisionShape2D" parent="DetectionArea"]

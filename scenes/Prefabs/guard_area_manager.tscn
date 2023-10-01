@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b66darbn5cmxc"]
+
+[ext_resource type="Script" path="res://scripts/GuardAreaManager.gd" id="1_b27x2"]
+[ext_resource type="PackedScene" uid="uid://dhmu22bgt8f44" path="res://scenes/Prefabs/guard_area.tscn" id="2_ajb7l"]
+
+[node name="GuardAreaManager" type="Node2D" groups=["GuardAreaManager"]]
+script = ExtResource("1_b27x2")
+
+[node name="Area2D" parent="." instance=ExtResource("2_ajb7l")]
+position = Vector2(1028, -33)

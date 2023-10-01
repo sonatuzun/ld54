@@ -1,18 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=14 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
 [ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://scenes/Rock.tscn" id="1_yqn74"]
-[ext_resource type="PackedScene" path="res://ai_enemy.tscn" id="2_vblip"]
 [ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="3_civsd"]
-[ext_resource type="Script" path="res://scripts/GuardAreaManager.gd" id="3_yfovp"]
 [ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
 [ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
 [ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
-[ext_resource type="PackedScene" uid="uid://dcni6fgdulmc3" path="res://scenes/Foreground.tscn" id="13_bg7qs"]
+[ext_resource type="PackedScene" uid="uid://yxa5mw7apkrc" path="res://scenes/Fishes.tscn" id="11_mabs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
 shader = ExtResource("9_38dcr")
@@ -34,16 +32,8 @@ shader_parameter/saturation = 1.0
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
 
-[node name="Enemy" parent="." instance=ExtResource("2_vblip")]
-position = Vector2(509, 337)
-scale = Vector2(1.205, 1.205)
-
-[node name="GuardAreaManager" type="Node2D" parent="."]
-position = Vector2(509, 337)
-scale = Vector2(1.205, 1.205)
-script = ExtResource("3_yfovp")
-
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(509, 337)
 scale = Vector2(1.205, 1.205)
 texture = ExtResource("3_civsd")
@@ -55,10 +45,12 @@ inertia = 0.01
 metadata/_edit_group_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="Link"]
-zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Fishes" parent="Link/Camera2D2" instance=ExtResource("11_mabs5")]
+position = Vector2(-457, -311)
 
 [node name="PointLight2D" type="PointLight2D" parent="Link"]
 position = Vector2(-35, 47)
@@ -78,6 +70,7 @@ script = ExtResource("4_ahigo")
 ROTATION_SPEED = 0.5
 
 [node name="WaterShader" type="Sprite2D" parent="Link"]
+visible = false
 material = SubResource("ShaderMaterial_828q0")
 position = Vector2(-26, 29.5)
 scale = Vector2(19.7969, 11.8672)
@@ -113,7 +106,5 @@ position = Vector2(140, 110)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.164706, 0.164706, 0.164706, 1)
-
-[node name="Fishes" parent="." instance=ExtResource("13_bg7qs")]
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

@@ -92,7 +92,7 @@ func HandleWrenchRotation():
 	targetWrenchAngle += 1.25 * PI + PI
 	var currentWrenchAngle = $Wrench.rotation
 	var wrenchAngleDiff = fmod(targetWrenchAngle - currentWrenchAngle, 2 * PI) - PI
-	$Wrench.apply_torque_impulse(wrenchAngleDiff * 15000)
+	$Wrench.apply_torque_impulse(wrenchAngleDiff * 50000 * $Wrench._postScale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -13,5 +13,5 @@ func _process(delta):
 
 func _on_hp_component_hp_reached_zero():
 	await get_tree().create_timer(0.2).timeout
-	get_parent().queue_free()
+	queue_free()
 	pass # Replace with function body.

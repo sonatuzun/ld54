@@ -29,24 +29,26 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_u53vb")
 offset = Vector2(200, -200)
 
-[node name="Head collider" type="CollisionShape2D" parent="."]
+[node name="HeadCollider" type="CollisionShape2D" parent="."]
 position = Vector2(116, -116)
 shape = SubResource("CircleShape2D_foyyf")
 
-[node name="Body collider" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(58.689, -57.0159)
 rotation = 0.767945
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_y3sj7")
 
-[node name="Hit trigger" type="Area2D" parent="."]
+[node name="HitTrigger" type="Area2D" parent="."]
 position = Vector2(58.689, -57.0159)
 rotation = 0.767945
 collision_layer = 2
 collision_mask = 2
 
-[node name="Head hit collider" type="CollisionShape2D" parent="Hit trigger"]
+[node name="Head hit collider" type="CollisionShape2D" parent="HitTrigger"]
 position = Vector2(0.25, -82)
 shape = SubResource("CircleShape2D_sxept")
 
-[connection signal="area_entered" from="Hit trigger" to="." method="_on_trigger"]
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="HitTrigger" to="." method="_on_trigger"]

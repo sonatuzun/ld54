@@ -26,7 +26,7 @@ shader = ExtResource("4_qrecx")
 radius = 46.2709
 
 [node name="Link" type="RigidBody2D"]
-mass = 33.0
+mass = 52.63
 inertia = 17.78
 gravity_scale = 0.0
 lock_rotation = true
@@ -36,6 +36,7 @@ script = ExtResource("1_ks5dt")
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../Wrench")
 node_b = NodePath("..")
+softness = 0.1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qnp2p")
@@ -47,6 +48,7 @@ script = ExtResource("3_58lwe")
 [node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
 mass = 3.0
 inertia = 0.0
+angular_damp = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 7)

@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_link_player_died():
-	$BrokenGlass.visible = true
+	$Link/BrokenGlass.visible = true
 	$CanvasModulate.visible = false
 	await get_tree().create_timer(2).timeout
 	get_tree().reload_current_scene()

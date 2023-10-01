@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=17 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
@@ -13,6 +13,9 @@
 [ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
 [ext_resource type="Texture2D" uid="uid://bhgpf3btq27eq" path="res://assets/hamsi.png" id="10_6855o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
+bounce = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
 shader = ExtResource("9_38dcr")
@@ -31,15 +34,6 @@ shader_parameter/brightness = 1.0
 shader_parameter/contrast = 2.0
 shader_parameter/saturation = 1.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
-bounce = 0.5
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1oft"]
-friction = 0.0
-bounce = 0.8
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ct1tm"]
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
 
@@ -55,6 +49,7 @@ inertia = 0.01
 metadata/_edit_group_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="Link"]
+zoom = Vector2(0.5, 0.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -75,19 +70,6 @@ texture = ExtResource("5_syh7u")
 texture_scale = 15.0
 script = ExtResource("4_ahigo")
 ROTATION_SPEED = 0.5
-
-[node name="WaterShader" type="Sprite2D" parent="Link"]
-material = SubResource("ShaderMaterial_828q0")
-position = Vector2(-26, 29.5)
-scale = Vector2(19.7969, 11.8672)
-texture = ExtResource("9_u2da5")
-
-[node name="BrokenGlass" type="Sprite2D" parent="Link"]
-visible = false
-material = SubResource("ShaderMaterial_nvax2")
-position = Vector2(-26, 29.5)
-scale = Vector2(19.7969, 11.8672)
-texture = ExtResource("9_u2da5")
 
 [node name="Rock" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(809, -47)
@@ -129,21 +111,29 @@ physics_material_override = SubResource("PhysicsMaterial_bkf25")
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Fishes" type="Node2D" parent="."]
-position = Vector2(920, 368)
+position = Vector2(484, 341.5)
+scale = Vector2(1.669, 1)
 script = ExtResource("9_2o7g0")
 
 [node name="Fish" type="RigidBody2D" parent="Fishes"]
-collision_layer = 0
-mass = 0.01
-physics_material_override = SubResource("PhysicsMaterial_w1oft")
-gravity_scale = 0.0
-lock_rotation = true
+linear_damp = 2.0
 
 [node name="Fish" type="Sprite2D" parent="Fishes/Fish"]
+position = Vector2(-289.994, -341.5)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("10_6855o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishes/Fish"]
-shape = SubResource("CircleShape2D_ct1tm")
+[node name="WaterShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
+
+[node name="BrokenGlass" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nvax2")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

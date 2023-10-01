@@ -20,12 +20,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_postScale += delta / 1000
+	_postScale += delta / 35
 	var scaleVector = Vector2(delta, delta)
 	$WeaponIcon.position = _weaponIconInitialPosition * _postScale
-	$HeadCollider.position = _headColliderInitialPosition * _postScale 
-	$BodyCollider.position = _bodyColliderInitialPosition * _postScale 
-	$HitTrigger.position = _hitTriggerInitialPosition * _postScale 
+	$HeadCollider.position = _headColliderInitialPosition * _postScale
+	$BodyCollider.position = _bodyColliderInitialPosition * _postScale
+	$HitTrigger.position = _hitTriggerInitialPosition * _postScale
 
 	$WeaponIcon.scale = _weaponIconInitialScale * _postScale
 	$HeadCollider.scale = _headColliderInitialScale * _postScale
@@ -35,13 +35,13 @@ func _process(delta):
 
 func _on_trigger(area):
 	if (area is HitboxComponent):
-		
+
 		var angular_magn = abs(angular_velocity)
 		var MAX_MAGN = 14.0
-		
+
 		angular_magn = clamp(angular_magn,0, MAX_MAGN)
 		var extraDmg = angular_magn / MAX_MAGN
 		var finalDmg = (1 + extraDmg) * WEAPON_DAMAGE_BASE
-		
+
 		print("weapon did:", finalDmg, " damage.")
 		area.damage(finalDmg)

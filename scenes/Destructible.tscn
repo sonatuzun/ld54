@@ -42,5 +42,3 @@ hpComponent = NodePath("../HpComponent")
 [node name="Hit Detection Area" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_coapa")
-
-[connection signal="damageTaken" from="HpComponent" to="Icon" method="flash"]

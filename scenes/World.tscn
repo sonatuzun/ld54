@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
 [ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
-[ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="7_df86e"]
+[ext_resource type="PackedScene" uid="uid://cwkfa0r2dj5oq" path="res://Monster.tscn" id="7_df86e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
 bounce = 0.5

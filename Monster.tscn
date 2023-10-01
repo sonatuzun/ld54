@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://n8ja1yppl0wf"]
+[gd_scene load_steps=11 format=3 uid="uid://cwkfa0r2dj5oq"]
 
 [ext_resource type="Script" path="res://scenes/Monster.gd" id="1_2g0hn"]
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_2b64f"]

@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var _playerPositionIsKnown := false
 var _player
-var ACCELERATION = 2000
+var ACCELERATION = 1200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,11 +19,12 @@ func _process(delta):
 func _physics_process(delta):
 	if _playerPositionIsKnown and _player:
 		var diff = _player.position - position
-		var impulse = diff.normalized() * ACCELERATION * mass * delta
-		apply_central_impulse(impulse)
-	$Sprite2D.flip_h = linear_velocity.x > 0
-	$DetectionArea.scale.x = -(int(linear_velocity.x > 0) - 0.5) * 2
-	
+		var impulse = diff.normalized() * ACCELERATION * mass
+		apply_central_force(impulse)
+		
+	var facingRight = linear_velocity.x > 0.0
+	$Sprite2D.flip_h = facingRight
+	$DetectionArea.scale.x = -1.0 if facingRight else 1.0
 
 func _on_detection_area_body_entered(body):
 	print("body entered")

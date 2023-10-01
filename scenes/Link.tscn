@@ -34,6 +34,7 @@ linear_damp = 5.0
 script = ExtResource("1_ks5dt")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(11, 21)
 node_a = NodePath("../Wrench")
 node_b = NodePath("..")
 softness = 0.1
@@ -45,6 +46,7 @@ hframes = 12
 script = ExtResource("3_58lwe")
 
 [node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
+position = Vector2(37, 22)
 mass = 3.0
 inertia = 0.0
 angular_damp = 15.0

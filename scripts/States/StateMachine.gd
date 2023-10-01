@@ -28,8 +28,7 @@ func on_child_transition(requester_state, new_state_id):
 		return
 	
 	var new_state = states.get(new_state_id)
-	if !new_state:
-		return
+
 	# Perform the Transition
 	requester_state.Exit()
 	new_state.Enter()

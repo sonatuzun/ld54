@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=14 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
@@ -7,12 +7,11 @@
 [ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
 [ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
-[ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="7_df86e"]
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
-bounce = 0.5
+[ext_resource type="PackedScene" uid="uid://dhmu22bgt8f44" path="res://scenes/Prefabs/guard_area.tscn" id="11_hnwq3"]
+[ext_resource type="PackedScene" uid="uid://cnhg1yivjbkv2" path="res://ai_enemy.tscn" id="11_iu47a"]
+[ext_resource type="Script" path="res://scripts/GuardAreaManager.gd" id="11_v7d4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvax2"]
 shader = ExtResource("9_5pkl4")
@@ -29,7 +28,7 @@ scale = Vector2(1.205, 1.205)
 texture = ExtResource("3_civsd")
 
 [node name="Link" parent="." groups=["Player"] instance=ExtResource("1_co5tl")]
-position = Vector2(510, 312)
+position = Vector2(457, 311)
 mass = 22.05
 inertia = 0.01
 metadata/_edit_group_ = true
@@ -60,6 +59,15 @@ ROTATION_SPEED = 0.5
 [node name="Rock" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(809, -47)
 
+[node name="Rock4" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(994, -160)
+
+[node name="Rock5" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1154, 164)
+
+[node name="Rock6" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1371, -130)
+
 [node name="Rock2" parent="." instance=ExtResource("1_yqn74")]
 position = Vector2(1028, 569)
 
@@ -67,31 +75,7 @@ position = Vector2(1028, 569)
 position = Vector2(72, 699)
 
 [node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
-position = Vector2(132, 108)
-
-[node name="Monster4" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(2472, 4600)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster3" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(649, -177)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster2" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(1007, 940)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster5" parent="." instance=ExtResource("7_df86e")]
-position = Vector2(1416, -23)
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
-
-[node name="Monster" parent="." instance=ExtResource("7_df86e")]
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_bkf25")
+position = Vector2(140, 110)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.607843, 0.607843, 0.607843, 1)
@@ -102,5 +86,14 @@ material = SubResource("ShaderMaterial_nvax2")
 position = Vector2(484, 341.5)
 scale = Vector2(19.7969, 11.8672)
 texture = ExtResource("9_u2da5")
+
+[node name="Enemy" parent="." instance=ExtResource("11_iu47a")]
+position = Vector2(1546, 436)
+
+[node name="GuardAreaManager" type="Node2D" parent="." groups=["GuardAreaManager"]]
+script = ExtResource("11_v7d4t")
+
+[node name="guard area 1" parent="GuardAreaManager" instance=ExtResource("11_hnwq3")]
+position = Vector2(977, -22)
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

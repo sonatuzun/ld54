@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnhg1yivjbkv2"]
+[gd_scene load_steps=14 format=3 uid="uid://cnhg1yivjbkv2"]
 
 [ext_resource type="Script" path="res://MonsterAI.gd" id="1_ewmj3"]
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="1_mt2ky"]
-[ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="2_jnhmm"]
+[ext_resource type="Script" path="res://scripts/States/FindGuard.gd" id="3_0vjrg"]
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="3_bym6l"]
+[ext_resource type="Script" path="res://scripts/States/GuardArea.gd" id="4_bxa04"]
 [ext_resource type="Texture2D" uid="uid://cfqy67lrkom3" path="res://unpaintedRichulhu.png" id="4_ty0ac"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="5_if2tr"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="6_c4oit"]
@@ -32,11 +33,15 @@ state_m = NodePath("StateMachine")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_mt2ky")
-initial_state = NodePath("EnemyIdle")
+initial_state = NodePath("FindGuardArea")
 
-[node name="EnemyIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("2_jnhmm")
+[node name="FindGuardArea" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_0vjrg")
 enemy = NodePath("../..")
+
+[node name="GuardAreaState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("rb")]
+script = ExtResource("4_bxa04")
+rb = NodePath("../..")
 
 [node name="enemy visuals" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_kdqya")

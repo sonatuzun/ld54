@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcni6fgdulmc3"]
+
+[ext_resource type="Script" path="res://scripts/Fishes.gd" id="1_c3diu"]
+[ext_resource type="PackedScene" uid="uid://doqn4bwky7stc" path="res://scenes/Fish.tscn" id="2_jqmoa"]
+[ext_resource type="Texture2D" uid="uid://bhgpf3btq27eq" path="res://assets/hamsi.png" id="3_kxrfy"]
+[ext_resource type="Script" path="res://scripts/ForegroundLayer.gd" id="3_usjbq"]
+
+[node name="Fishes" type="Node2D"]
+position = Vector2(920, 368)
+script = ExtResource("1_c3diu")
+
+[node name="Physical" type="Node2D" parent="."]
+
+[node name="Fish" parent="Physical" instance=ExtResource("2_jqmoa")]
+
+[node name="PB" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="PB"]
+scale = Vector2(1.5, 1.5)
+motion_scale = Vector2(1.5, 1.5)
+script = ExtResource("3_usjbq")
+
+[node name="Fish" type="Sprite2D" parent="PB/ParallaxLayer2"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kxrfy")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="PB"]
+scale = Vector2(2, 2)
+motion_scale = Vector2(2, 2)
+script = ExtResource("3_usjbq")
+
+[node name="Fish" type="Sprite2D" parent="PB/ParallaxLayer"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kxrfy")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="PB"]
+scale = Vector2(3, 3)
+motion_scale = Vector2(2.5, 2.5)
+script = ExtResource("3_usjbq")
+
+[node name="Fish" type="Sprite2D" parent="PB/ParallaxLayer3"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kxrfy")

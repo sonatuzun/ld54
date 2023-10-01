@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=17 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
 [ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
-[ext_resource type="Texture2D" uid="uid://bhgpf3btq27eq" path="res://assets/hamsi.png" id="10_6855o"]
+[ext_resource type="PackedScene" uid="uid://doqn4bwky7stc" path="res://scenes/Fish.tscn" id="13_2vgrs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
 shader = ExtResource("9_38dcr")
@@ -33,12 +33,6 @@ shader_parameter/saturation = 1.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
 bounce = 0.5
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1oft"]
-friction = 0.0
-bounce = 0.8
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ct1tm"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
@@ -132,18 +126,6 @@ color = Color(0.164706, 0.164706, 0.164706, 1)
 position = Vector2(920, 368)
 script = ExtResource("9_2o7g0")
 
-[node name="Fish" type="RigidBody2D" parent="Fishes"]
-collision_layer = 0
-mass = 0.01
-physics_material_override = SubResource("PhysicsMaterial_w1oft")
-gravity_scale = 0.0
-lock_rotation = true
-
-[node name="Fish" type="Sprite2D" parent="Fishes/Fish"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_6855o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishes/Fish"]
-shape = SubResource("CircleShape2D_ct1tm")
+[node name="Fish" parent="Fishes" instance=ExtResource("13_2vgrs")]
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

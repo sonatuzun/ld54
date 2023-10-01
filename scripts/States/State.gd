@@ -5,6 +5,7 @@ signal OnTransition(requester_state: State, new_state: StateNames)
 
 enum StateNames{
 	Idle,
+	FindGuardArea,
 	MoveTowardsTarget,
 	GuardArea
 }

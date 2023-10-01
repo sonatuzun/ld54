@@ -25,6 +25,7 @@ func _physics_process(delta):
 	var facingRight = linear_velocity.x > 0.0
 	$Sprite2D.flip_h = facingRight
 	$DetectionArea.scale.x = -1.0 if facingRight else 1.0
+	$HurtBox.scale.x = -1.0 if facingRight else 1.0
 
 func _on_detection_area_body_entered(body):
 	print("body entered")

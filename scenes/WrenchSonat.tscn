@@ -19,6 +19,7 @@ angular_damp = 15.0
 script = ExtResource("1_qa6ea")
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_in6bg")
 offset = Vector2(185, -5)

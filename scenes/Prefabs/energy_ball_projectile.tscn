@@ -13,4 +13,5 @@ script = ExtResource("1_1o4b4")
 shape = SubResource("CircleShape2D_iea7e")
 
 [node name="energy ball sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_n6ubx")

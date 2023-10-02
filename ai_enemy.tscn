@@ -81,7 +81,6 @@ offset_bottom = -88.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_lkcbv")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 position = Vector2(11, 33)
 
 [node name="detection area" type="CollisionShape2D" parent="DetectionArea"]
@@ -91,4 +90,5 @@ shape = SubResource("CircleShape2D_gec4l")
 [connection signal="damageTaken" from="HpComponent" to="enemy visuals" method="flash" flags=18]
 [connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="StateMachine/GuardAreaState" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

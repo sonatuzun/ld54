@@ -19,11 +19,14 @@ func Update(delta: float): # Override
 	if !player:
 		player = get_tree().get_first_node_in_group("Player")
 		
-	if player:
-		look_at(player.global_position)
-#		print("guarding area")
-			
 func Physics_Update(_delta: float):
-	if rb:
+	if rb && rb.linear_velocity != Vector2.ZERO:
 		rb.linear_velocity = Vector2.ZERO
 		
+	if rb && player:
+		rb.look_at(player.global_position)
+
+func _on_detection_area_body_entered(body):
+	if body == player:
+		print("enemy trying to throw something")
+		# throw something

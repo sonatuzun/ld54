@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8102api36bsi"]
+
+[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="1_p2106"]
+[ext_resource type="Texture2D" uid="uid://cdxldb7ksagfj" path="res://assets/LevelParts/algae.png" id="2_gtmvc"]
+[ext_resource type="Texture2D" uid="uid://bosdp2oomqhix" path="res://assets/LevelParts/Bomb.png" id="3_rxyti"]
+
+[node name="Level1Scene" type="Node2D"]
+
+[node name="BGS" type="Node2D" parent="."]
+
+[node name="BG1" type="Sprite2D" parent="BGS"]
+scale = Vector2(3, 2.993)
+texture = ExtResource("1_p2106")
+
+[node name="BG2" type="Sprite2D" parent="BGS"]
+position = Vector2(5770, 0)
+rotation = 3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("1_p2106")
+
+[node name="BG3" type="Sprite2D" parent="BGS"]
+position = Vector2(0, 3250)
+scale = Vector2(3, -3)
+texture = ExtResource("1_p2106")
+
+[node name="BG4" type="Sprite2D" parent="BGS"]
+position = Vector2(5781, 3258)
+scale = Vector2(3, -3)
+texture = ExtResource("1_p2106")
+
+[node name="Algae" type="Sprite2D" parent="."]
+position = Vector2(-578, 478)
+texture = ExtResource("2_gtmvc")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+position = Vector2(909, 412)
+texture = ExtResource("3_rxyti")

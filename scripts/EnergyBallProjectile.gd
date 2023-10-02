@@ -5,6 +5,8 @@ var speed = 750
 
 var moveDir = Vector2.ZERO
 
+var maxScale = 2.5
+
 func _ready():
 	connect("area_entered",self.on_area_entered)
 	collision_layer = 2
@@ -18,6 +20,9 @@ func fire(dir: Vector2, spawnPos: Vector2):
 
 func _physics_process(delta):
 	translate(moveDir * speed * delta)
+	var scaleIncrease = 100
+	if(scale.x < maxScale):
+		scale += Vector2.ONE * delta
 
 func on_area_entered(area):
 	if not area is HitboxComponent:

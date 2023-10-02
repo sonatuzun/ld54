@@ -27,7 +27,7 @@ radius = 46.2709
 
 [node name="Link" type="RigidBody2D"]
 mass = 52.63
-inertia = 17.78
+inertia = 1.0
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 5.0
@@ -60,8 +60,10 @@ material = SubResource("ShaderMaterial_akpqs")
 position = Vector2(-0.500015, -3.05176e-05)
 scale = Vector2(16.2109, 10.2812)
 
-[node name="HpComponent" type="Node2D" parent="."]
+[node name="HpComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("5_wwub0")
+healthBar = NodePath("../ProgressBar")
+INITIAL_HP = 300
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent") groups=["Player"]]
 script = ExtResource("5_iiegp")
@@ -69,6 +71,12 @@ hpComponent = NodePath("../HpComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dqxw8")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -109.0
+offset_top = -142.0
+offset_right = 109.0
+offset_bottom = -115.0
 
 [connection signal="damageTaken" from="HpComponent" to="Sprite" method="flash"]
 [connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]

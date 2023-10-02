@@ -1,17 +1,36 @@
-[gd_scene load_steps=13 format=3 uid="uid://n8ja1yppl0wf"]
+[gd_scene load_steps=16 format=3 uid="uid://n8ja1yppl0wf"]
 
 [ext_resource type="Script" path="res://scenes/Monster.gd" id="1_2g0hn"]
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_2b64f"]
-[ext_resource type="Texture2D" uid="uid://cfqy67lrkom3" path="res://unpaintedRichulhu.png" id="3_qpisl"]
+[ext_resource type="Texture2D" uid="uid://dosqubiawqb23" path="res://assets/enemy/trumphulhu.png" id="3_4vr3x"]
+[ext_resource type="Texture2D" uid="uid://bgxfbn6024qao" path="res://assets/enemy/trumphulhu_moving.png" id="4_76yet"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="4_h2bqb"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="5_gkpx2"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="6_of8rx"]
 [ext_resource type="Script" path="res://scenes/HurtBox.gd" id="7_b4wyo"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ii7h"]
+friction = 0.0
+bounce = 0.6
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdqya"]
 shader = ExtResource("2_2b64f")
 shader_parameter/isEnabled = false
 shader_parameter/paintColor = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dc8ec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4vr3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_76yet")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqou2"]
 radius = 65.0692
@@ -27,15 +46,18 @@ radius = 84.1487
 
 [node name="Monster" type="RigidBody2D"]
 position = Vector2(309, 575)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_7ii7h")
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 4.0
 script = ExtResource("1_2g0hn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_kdqya")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_qpisl")
+sprite_frames = SubResource("SpriteFrames_dc8ec")
+autoplay = "default"
 script = ExtResource("4_h2bqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -44,26 +66,25 @@ position = Vector2(-7, -32)
 shape = SubResource("CircleShape2D_rqou2")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent")]
-visible = false
+position = Vector2(15, 22)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_gkpx2")
 hpComponent = NodePath("../HpComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-visible = false
 position = Vector2(-6, -29)
 shape = SubResource("CircleShape2D_qw7oo")
 
 [node name="HpComponent" type="Node2D" parent="."]
+visible = false
 script = ExtResource("6_of8rx")
 INITIAL_HP = 50
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(-194, -7)
+position = Vector2(110, -8)
 shape = SubResource("CircleShape2D_gec4l")
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -72,7 +93,7 @@ collision_mask = 2
 script = ExtResource("7_b4wyo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-40, -48)
+position = Vector2(110, -9)
 shape = SubResource("CircleShape2D_t3i1g")
 
 [connection signal="damageTaken" from="HpComponent" to="Sprite2D" method="flash"]

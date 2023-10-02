@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://deb6nt8xlo5ji"]
+[gd_scene load_steps=7 format=3 uid="uid://deb6nt8xlo5ji"]
 
 [ext_resource type="Theme" uid="uid://bk3vad3bglhd4" path="res://MinimalUI.tres" id="1_muybm"]
+[ext_resource type="Script" path="res://MainMenu.gd" id="2_1y7ab"]
 [ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="2_th083"]
 [ext_resource type="Shader" path="res://FOV.gdshader" id="3_uqfsb"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="4_k2s43"]
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_muybm")
+script = ExtResource("2_1y7ab")
 
 [node name="UntitledArtwork" type="Sprite2D" parent="."]
 position = Vector2(577, 323.5)
@@ -42,3 +44,5 @@ material = SubResource("ShaderMaterial_jdd13")
 position = Vector2(587, 340)
 scale = Vector2(9.5625, 5.70313)
 texture = ExtResource("4_k2s43")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

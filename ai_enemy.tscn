@@ -6,15 +6,17 @@
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="3_bym6l"]
 [ext_resource type="Script" path="res://scripts/States/GuardArea.gd" id="4_bxa04"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="5_if2tr"]
-[ext_resource type="PackedScene" uid="uid://bmjo6cm5lvis3" path="res://scenes/Prefabs/energy_ball_projectile.tscn" id="5_p4j5n"]
+[ext_resource type="PackedScene" uid="uid://b24vxr18jhg2d" path="res://scenes/Prefabs/energy_ball_projectile.tscn" id="5_p4j5n"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="6_c4oit"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="7_jbjle"]
-[ext_resource type="Texture2D" uid="uid://3ppv0vpn62lq" path="res://assets/enemy/trumpmonster_moving2.png" id="7_on140"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdqya"]
 shader = ExtResource("3_bym6l")
 shader_parameter/isEnabled = false
 shader_parameter/paintColor = Color(0, 0.819608, 0.819608, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3woe"]
+load_path = "res://.godot/imported/trumpmonster_moving2.png-45daa6670b394916019bdcfeaf3d66b1.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqou2"]
 radius = 65.0692
@@ -49,7 +51,7 @@ EnergyBallPrefab = ExtResource("5_p4j5n")
 material = SubResource("ShaderMaterial_kdqya")
 position = Vector2(11, 33)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_on140")
+texture = SubResource("CompressedTexture2D_g3woe")
 script = ExtResource("5_if2tr")
 
 [node name="collider" type="CollisionShape2D" parent="."]
@@ -70,7 +72,6 @@ shape = SubResource("CircleShape2D_qw7oo")
 [node name="HpComponent" type="Node2D" parent="."]
 position = Vector2(11, 33)
 script = ExtResource("7_jbjle")
-INITIAL_HP = 80
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(11, 33)

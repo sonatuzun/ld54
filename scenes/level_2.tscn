@@ -1,56 +1,98 @@
-[gd_scene load_steps=18 format=3 uid="uid://ceveqdaem2c1a"]
+[gd_scene load_steps=27 format=3 uid="uid://l3v0raed3s2k"]
 
+[ext_resource type="Script" path="res://scenes/level_2.gd" id="1_cbnc4"]
 [ext_resource type="PackedScene" uid="uid://b66darbn5cmxc" path="res://scenes/Prefabs/guard_area_manager.tscn" id="1_jsi8o"]
+[ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="2_0o6l4"]
 [ext_resource type="PackedScene" uid="uid://cnhg1yivjbkv2" path="res://ai_enemy.tscn" id="2_8iy21"]
+[ext_resource type="PackedScene" uid="uid://cl3tk14mqebeq" path="res://scenes/Richbie.tscn" id="2_u4w5r"]
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="5_5735a"]
 [ext_resource type="Texture2D" uid="uid://k2vst384yyq" path="res://assets/BG-V2.png" id="5_ifse4"]
 [ext_resource type="PackedScene" uid="uid://dhmu22bgt8f44" path="res://scenes/Prefabs/guard_area.tscn" id="6_b4nl2"]
 [ext_resource type="Texture2D" uid="uid://bosdp2oomqhix" path="res://assets/LevelParts/Bomb.png" id="6_fkr0s"]
 [ext_resource type="Texture2D" uid="uid://d3ix75chb2fok" path="res://assets/LevelParts/destroyed_bomb.png" id="7_jwadn"]
-[ext_resource type="PackedScene" uid="uid://b7p6h8hvv002s" path="res://scenes/Prefabs/elbow_pipe.tscn" id="8_naff6"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="8_5typp"]
+[ext_resource type="Shader" path="res://shaders/Water.gdshader" id="8_a8v5u"]
+[ext_resource type="PackedScene" uid="uid://dvhixm65x01on" path="res://scenes/Prefabs/elbow_pipe.tscn" id="8_naff6"]
 [ext_resource type="Texture2D" uid="uid://cc2oabnw6v2ed" path="res://assets/LevelParts/ocean_vent.png" id="9_qja8x"]
-[ext_resource type="PackedScene" uid="uid://dyeihq6fnwgfk" path="res://scenes/Prefabs/horizontal_pipe.tscn" id="11_e2a3v"]
+[ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="10_bxxkg"]
+[ext_resource type="Script" path="res://scenes/lightMover.gd" id="11_35rjj"]
+[ext_resource type="PackedScene" uid="uid://dokr83gosu8hc" path="res://scenes/Prefabs/horizontal_pipe.tscn" id="11_e2a3v"]
 [ext_resource type="Texture2D" uid="uid://cdxldb7ksagfj" path="res://assets/LevelParts/algae.png" id="11_ihtil"]
-[ext_resource type="PackedScene" uid="uid://dbsp47633cplq" path="res://scenes/Prefabs/corner_part_3.tscn" id="14_7f3jp"]
+[ext_resource type="PackedScene" uid="uid://cr0e5xl0b232q" path="res://scenes/Prefabs/corner_part_3.tscn" id="14_7f3jp"]
 [ext_resource type="Texture2D" uid="uid://cximbjsp6kna0" path="res://assets/background3.png" id="14_o0dvp"]
-[ext_resource type="PackedScene" uid="uid://dttnsift7m8w0" path="res://scenes/Prefabs/vent.tscn" id="15_31tdc"]
-[ext_resource type="PackedScene" uid="uid://cwok18qdcj8ts" path="res://scenes/Prefabs/weird_pipe.tscn" id="15_hn08f"]
+[ext_resource type="PackedScene" path="res://scenes/Prefabs/vent.tscn" id="15_31tdc"]
+[ext_resource type="PackedScene" path="res://scenes/Prefabs/weird_pipe.tscn" id="15_hn08f"]
 [ext_resource type="Texture2D" uid="uid://478nwqt3f4fr" path="res://assets/background1.png" id="16_ue4qi"]
 [ext_resource type="Texture2D" uid="uid://c5y3h8t21i862" path="res://assets/background4.png" id="17_q4v2u"]
+[ext_resource type="PackedScene" uid="uid://yxa5mw7apkrc" path="res://scenes/Fishes.tscn" id="23_b3txe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jh0d"]
+shader = ExtResource("8_a8v5u")
+shader_parameter/baseRate = 1.5
 
 [node name="level_2" type="Node2D"]
+script = ExtResource("1_cbnc4")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Node2D" instance=ExtResource("2_8iy21")]
+[node name="Monster2" parent="Enemies" instance=ExtResource("2_0o6l4")]
+position = Vector2(-1200, 956)
+
+[node name="Monster" parent="Enemies" instance=ExtResource("2_0o6l4")]
+position = Vector2(1241, 711)
+
+[node name="Monster4" parent="Enemies" instance=ExtResource("2_0o6l4")]
+position = Vector2(-613, 929)
+
+[node name="Monster3" parent="Enemies" instance=ExtResource("2_0o6l4")]
+position = Vector2(802, 1102)
+
+[node name="Richbie" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(932, 136)
+
+[node name="Richbie2" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-412, 416)
+
+[node name="Richbie3" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-1020, 536)
+
+[node name="Richbie4" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-160, 960)
+
+[node name="Richbie5" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(1360, 692)
+
+[node name="Richbie6" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(1648, -196)
+
+[node name="Richbie7" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(732, 764)
+
+[node name="Richbie9" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-1352, 1108)
+
+[node name="Richbie10" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(1412, 1316)
+
+[node name="Richbie11" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-1464, 1348)
+
+[node name="Richbie8" parent="Enemies" instance=ExtResource("2_u4w5r")]
+position = Vector2(-904, 948)
+
+[node name="Enemy" parent="Enemies" groups=["Enemy"] instance=ExtResource("2_8iy21")]
 position = Vector2(2016, -208)
 
-[node name="Enemy2" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+[node name="Enemy2" parent="Enemies" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
 position = Vector2(1779, 1239)
 state_m = NodePath("../Enemy/StateMachine")
 
-[node name="Enemy8" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+[node name="Enemy8" parent="Enemies" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
 position = Vector2(976, 1072)
 state_m = NodePath("../Enemy/StateMachine")
 
-[node name="Enemy5" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+[node name="Enemy5" parent="Enemies" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
 position = Vector2(-1088, 1416)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy6" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(-1608, 808)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy7" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(-56, 1368)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy3" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(168, 35)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy4" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(-595, -55)
 state_m = NodePath("../Enemy/StateMachine")
 
 [node name="GuardAreaManager" parent="." instance=ExtResource("1_jsi8o")]
@@ -80,13 +122,61 @@ position = Vector2(-1314, -298)
 [node name="Area2D4" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
 position = Vector2(1870, 662)
 
-[node name="Link" parent="." instance=ExtResource("5_5735a")]
+[node name="Link" parent="." groups=["Player"] instance=ExtResource("5_5735a")]
 z_index = 5
 position = Vector2(169, 240)
-_speedMultiplier = 5
+_speedMultiplier = 2
+
+[node name="TEXT" type="Node2D" parent="Link"]
+position = Vector2(-479, -230)
+scale = Vector2(5, 5)
+
+[node name="Restart" type="Label" parent="Link/TEXT"]
+visible = false
+offset_left = 69.0
+offset_top = 76.6
+offset_right = 126.0
+offset_bottom = 102.6
+text = "R to Restart"
+
+[node name="How to play" type="Label" parent="Link/TEXT"]
+offset_left = 52.4
+offset_top = 78.0
+offset_right = 168.4
+offset_bottom = 104.0
+text = "WASD + Mouse"
+
+[node name="YOUWIN" type="Node2D" parent="Link"]
+visible = false
+position = Vector2(-169, -240)
+scale = Vector2(10, 10)
+
+[node name="Label" type="Label" parent="Link/YOUWIN"]
+offset_left = -31.0
+offset_top = 1.0
+offset_right = 61.0
+offset_bottom = 27.0
+text = "YOU WIN"
 
 [node name="Camera2D" type="Camera2D" parent="Link"]
-zoom = Vector2(0.35, 0.35)
+zoom = Vector2(0.7, 0.7)
+
+[node name="WaterShader" type="Sprite2D" parent="Link/Camera2D"]
+material = SubResource("ShaderMaterial_3jh0d")
+scale = Vector2(24.2931, 16.8861)
+texture = ExtResource("8_5typp")
+
+[node name="PointLight2D_post" type="PointLight2D" parent="Link"]
+energy = 0.6
+texture = ExtResource("10_bxxkg")
+texture_scale = 20.0
+script = ExtResource("11_35rjj")
+
+[node name="PointLight2D2_post" type="PointLight2D" parent="Link"]
+energy = 0.8
+texture = ExtResource("10_bxxkg")
+texture_scale = 15.0
+script = ExtResource("11_35rjj")
 
 [node name="Decor" type="Node2D" parent="."]
 
@@ -315,5 +405,22 @@ position = Vector2(500, 3480)
 rotation = -0.000187435
 scale = Vector2(3, 3)
 texture = ExtResource("5_ifse4")
+
+[node name="Fishes" parent="." instance=ExtResource("23_b3txe")]
+
+[node name="Hide how to play timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Anounce restart timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="CanvasModulate_post" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]
+[connection signal="timeout" from="Hide how to play timer" to="." method="_on_hide_how_to_play_timer_timeout"]
+[connection signal="timeout" from="Anounce restart timer" to="." method="_on_anounce_restart_timer_timeout"]
 
 [editable path="GuardAreaManager"]

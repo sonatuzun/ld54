@@ -7,7 +7,7 @@ var player
 
 var lastShootTime = 0
 var canShoot = true
-var COOLDOWN = 5.0
+var COOLDOWN = 10.0
 
 func id():
 	return StateNames.GuardArea
@@ -26,9 +26,11 @@ func Update(delta: float): # Override
 func Physics_Update(_delta: float):
 	if rb && rb.linear_velocity != Vector2.ZERO:
 		rb.linear_velocity = Vector2.ZERO
-		
-	if rb && player && canShoot:
-		shoot()
+	
+	if player:
+		var distanceToPlayer = (player.position - get_parent().get_parent().position).length()
+		if rb && player && canShoot && distanceToPlayer > 100 && distanceToPlayer < 2000:
+			shoot()
 		
 func shoot():
 	var ball = EnergyBallPrefab.instantiate()

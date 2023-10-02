@@ -50,3 +50,9 @@ func _on_trigger(area):
 
 		print("weapon did:", finalDmg, " damage.")
 		area.damage(finalDmg)
+
+
+func _on_hit_trigger_area_entered(area):
+	if area.is_in_group("Bullet"):
+		area.queue_free()
+	pass # Replace with function body.

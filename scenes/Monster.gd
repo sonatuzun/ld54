@@ -22,7 +22,7 @@ func _physics_process(delta):
 		var impulse = diff.normalized() * ACCELERATION * mass
 		apply_central_force(impulse)
 
-	var facingRight = linear_velocity.x > 0.0
+	var facingRight = linear_velocity.x < 0.0
 	$Sprite2D.flip_h = facingRight
 	$DetectionArea.scale.x = -1.0 if facingRight else 1.0
 	$HurtBox.scale.x = -1.0 if facingRight else 1.0

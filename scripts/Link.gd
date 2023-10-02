@@ -88,11 +88,11 @@ func HandleWrenchRotation():
 	var plapos = player.position
 	var mouseRelativePosition = (mousePosition - plapos)
 	var targetWrenchAngle = -mouseRelativePosition.angle_to(Vector2.LEFT)
-	targetWrenchAngle += 1.25 * PI + PI
+	targetWrenchAngle += 1.25 * PI + PI - 0.9
 	if $Wrench:
 		var currentWrenchAngle = $Wrench.rotation
 		var wrenchAngleDiff = fmod(targetWrenchAngle - currentWrenchAngle, 2 * PI) - PI
-		$Wrench.apply_torque_impulse(wrenchAngleDiff * 50000 * $Wrench._postScale)
+		$Wrench.apply_torque_impulse(wrenchAngleDiff * 5000 * $Wrench._postScale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

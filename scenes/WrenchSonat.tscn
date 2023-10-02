@@ -4,29 +4,31 @@
 [ext_resource type="Script" path="res://scripts/Weapon.gd" id="1_qa6ea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhpcb"]
-size = Vector2(298, 41)
+size = Vector2(155, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sj4yo"]
-radius = 76.0263
+radius = 40.1123
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1yd2"]
-radius = 87.2066
+radius = 44.0454
 
 [node name="WrenchSonat" type="RigidBody2D"]
 mass = 0.1
 gravity_scale = 0.0
+angular_damp = 15.0
 script = ExtResource("1_qa6ea")
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_in6bg")
-offset = Vector2(200, -0.025)
+offset = Vector2(185, -5)
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(139, 3.5)
+position = Vector2(67.5, 2.5)
 shape = SubResource("RectangleShape2D_lhpcb")
 
 [node name="HeadCollider" type="CollisionShape2D" parent="."]
-position = Vector2(343, -2)
+position = Vector2(171, -1)
 shape = SubResource("CircleShape2D_sj4yo")
 one_way_collision = true
 
@@ -35,7 +37,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitTrigger"]
-position = Vector2(343, -1)
+position = Vector2(171, -3)
 shape = SubResource("CircleShape2D_x1yd2")
 
 [connection signal="area_entered" from="HitTrigger" to="." method="_on_trigger"]

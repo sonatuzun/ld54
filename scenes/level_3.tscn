@@ -1,75 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnkd37lwut2mm"]
+[gd_scene load_steps=3 format=3 uid="uid://dnkd37lwut2mm"]
 
+[ext_resource type="PackedScene" uid="uid://cl3tk14mqebeq" path="res://scenes/Richbie.tscn" id="1_308gs"]
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_j65hi"]
-[ext_resource type="Texture2D" uid="uid://hfhltf8dqt1t" path="res://scenes/zombie_stand_1.bmp" id="1_tldii"]
-[ext_resource type="Texture2D" uid="uid://cveuqlqq26a76" path="res://scenes/zombie_walk_1.bmp" id="2_18qri"]
-[ext_resource type="Texture2D" uid="uid://hm0juy3kwlbj" path="res://scenes/zombie_walk_2.bmp" id="3_4rqsg"]
-[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="4_850h6"]
-[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="5_xn530"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4r7cp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_tldii")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_18qri")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_4rqsg")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2qkb"]
-radius = 36.0
-height = 160.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_suyqf"]
-radius = 43.0
-height = 192.0
 
 [node name="level_3" type="Node2D"]
 
-[node name="Richbee" type="RigidBody2D" parent="."]
-position = Vector2(1666, 184)
-gravity_scale = 0.0
-lock_rotation = true
-linear_damp = 10.0
+[node name="Richbie" parent="." instance=ExtResource("1_308gs")]
 
-[node name="Timer" type="Timer" parent="Richbee"]
-wait_time = 4.0
-autostart = true
+[node name="Richbie2" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(1258, 431)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Richbee"]
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_4r7cp")
-animation = &"walk"
-autoplay = "walk"
-frame_progress = 0.758735
+[node name="Richbie3" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(733, 559)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Richbee"]
-position = Vector2(1, 16)
-shape = SubResource("CapsuleShape2D_o2qkb")
+[node name="Richbie4" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(221, 302)
 
-[node name="HpComponent" type="Node2D" parent="Richbee"]
-script = ExtResource("4_850h6")
+[node name="Richbie5" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(620, 155)
 
-[node name="HitboxComponent" type="Area2D" parent="Richbee" node_paths=PackedStringArray("hpComponent")]
-script = ExtResource("5_xn530")
-hpComponent = NodePath("../HpComponent")
+[node name="Richbie6" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(77, 633)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Richbee/HitboxComponent"]
-position = Vector2(0, 15)
-shape = SubResource("CapsuleShape2D_suyqf")
+[node name="Richbie7" parent="." instance=ExtResource("1_308gs")]
+position = Vector2(1644, 678)
 
 [node name="Link" parent="." instance=ExtResource("1_j65hi")]
 position = Vector2(905, 285)

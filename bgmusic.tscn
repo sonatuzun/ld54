@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://la80mnbif65n"]
+
+[ext_resource type="AudioStream" uid="uid://bli41vkqsr8cl" path="res://scenes/horrors of the deep.wav" id="1_id5om"]
+[ext_resource type="AudioStream" uid="uid://6vwnakpen6d" path="res://scenes/underwater-ambience-6201.mp3" id="2_0r6pb"]
+[ext_resource type="AudioStream" uid="uid://6iovkne0kyhw" path="res://scenes/underwater-whale-and-diving-sound-ambient-116185.ogg" id="3_cfmkt"]
+
+[node name="BGMUSIC" type="Node2D"]
+
+[node name="BGMUSIC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_id5om")
+volume_db = 24.0
+autoplay = true
+
+[node name="BGMUSIC2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0r6pb")
+volume_db = 6.0
+autoplay = true
+
+[node name="BGMUSIC3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cfmkt")

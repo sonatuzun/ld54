@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c8a0mwsd85xfp"]
+[gd_scene load_steps=14 format=3 uid="uid://c8a0mwsd85xfp"]
 
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
@@ -7,13 +7,14 @@
 [ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
 [ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
 [ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
-[ext_resource type="Script" path="res://scripts/Fishes.gd" id="9_2o7g0"]
 [ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
 [ext_resource type="Shader" path="res://shaders/Water.gdshader" id="9_38dcr"]
 [ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
-[ext_resource type="PackedScene" uid="uid://cnhg1yivjbkv2" path="res://ai_enemy.tscn" id="12_cy5c2"]
-[ext_resource type="PackedScene" path="res://scenes/Fish.tscn" id="13_2vgrs"]
-[ext_resource type="PackedScene" uid="uid://b66darbn5cmxc" path="res://scenes/Prefabs/guard_area_manager.tscn" id="15_a7q1r"]
+[ext_resource type="PackedScene" uid="uid://yxa5mw7apkrc" path="res://scenes/Fishes.tscn" id="11_mabs5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
+shader = ExtResource("9_38dcr")
+shader_parameter/baseRate = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nvax2"]
 shader = ExtResource("9_5pkl4")
@@ -21,15 +22,12 @@ shader_parameter/brightness = 1.0
 shader_parameter/contrast = 2.0
 shader_parameter/saturation = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
-shader = ExtResource("9_38dcr")
-shader_parameter/baseRate = 10.0
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
+position = Vector2(509, 337)
 scale = Vector2(3, 3)
 texture = ExtResource("3_civsd")
 
@@ -38,6 +36,20 @@ position = Vector2(457, 311)
 mass = 22.05
 inertia = 0.01
 metadata/_edit_group_ = true
+
+[node name="Camera2D2" type="Camera2D" parent="Link"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Fishes" parent="Link/Camera2D2" instance=ExtResource("11_mabs5")]
+position = Vector2(-457, -311)
+
+[node name="WaterShader" type="Sprite2D" parent="Link/Camera2D2"]
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(-13.4999, 12.9998)
+scale = Vector2(44.8359, 24.8438)
+texture = ExtResource("9_u2da5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Link"]
 position = Vector2(-35, 42)
@@ -56,6 +68,13 @@ texture_scale = 15.0
 script = ExtResource("4_ahigo")
 ROTATION_SPEED = 0.5
 
+[node name="WaterShader" type="Sprite2D" parent="Link"]
+visible = false
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(-26, 29.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
+
 [node name="BrokenGlass" type="Sprite2D" parent="Link"]
 visible = false
 material = SubResource("ShaderMaterial_nvax2")
@@ -63,50 +82,11 @@ position = Vector2(-26, 29.5)
 scale = Vector2(19.7969, 11.8672)
 texture = ExtResource("9_u2da5")
 
-[node name="Camera2D2" type="Camera2D" parent="Link"]
-position = Vector2(-457, -311)
-zoom = Vector2(0.35, 0.35)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
-[node name="WaterShader" type="Sprite2D" parent="Link/Camera2D2"]
-material = SubResource("ShaderMaterial_828q0")
-position = Vector2(-13.4999, 12.9998)
-scale = Vector2(44.8359, 24.8438)
-texture = ExtResource("9_u2da5")
-
 [node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
 position = Vector2(140, 110)
 
-[node name="Enemy" parent="." instance=ExtResource("12_cy5c2")]
-position = Vector2(884, 219)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.619608, 0.647059, 0.611765, 1)
-
-[node name="Fishes" type="Node2D" parent="."]
-position = Vector2(920, 368)
-script = ExtResource("9_2o7g0")
-
-[node name="Fish" parent="Fishes" instance=ExtResource("13_2vgrs")]
-
-[node name="PB" type="ParallaxBackground" parent="."]
-layer = 1
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="PB"]
-scale = Vector2(1.5, 1.5)
-motion_scale = Vector2(1.5, 1.5)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="PB"]
-scale = Vector2(2, 2)
-motion_scale = Vector2(2, 2)
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="PB"]
-scale = Vector2(3, 3)
-motion_scale = Vector2(2.5, 2.5)
-
-[node name="GuardAreaManager" parent="." instance=ExtResource("15_a7q1r")]
 
 [node name="rocks" type="Node2D" parent="."]
 

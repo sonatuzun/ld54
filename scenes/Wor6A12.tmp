@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8a0mwsd85xfp"]
+
+[ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="1_co5tl"]
+[ext_resource type="Script" path="res://scripts/World.gd" id="1_hl4ev"]
+[ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://scenes/Rock.tscn" id="1_yqn74"]
+[ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="3_civsd"]
+[ext_resource type="Script" path="res://scenes/lightMover.gd" id="4_ahigo"]
+[ext_resource type="PackedScene" uid="uid://0p77vtdkd3ph" path="res://scenes/Destructible.tscn" id="4_wa6lc"]
+[ext_resource type="Texture2D" uid="uid://btecndj8vptoo" path="res://sharp_light.png" id="5_syh7u"]
+[ext_resource type="PackedScene" uid="uid://n8ja1yppl0wf" path="res://Monster.tscn" id="7_df86e"]
+[ext_resource type="Shader" path="res://shaders/FOV.gdshader" id="9_5pkl4"]
+[ext_resource type="Texture2D" uid="uid://bsbow75laa0jg" path="res://assets/icon.svg" id="9_u2da5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bkf25"]
+bounce = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvax2"]
+shader = ExtResource("9_5pkl4")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 1.0
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_hl4ev")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(509, 337)
+scale = Vector2(1.205, 1.205)
+texture = ExtResource("3_civsd")
+
+[node name="Link" parent="." groups=["Player"] instance=ExtResource("1_co5tl")]
+position = Vector2(510, 312)
+mass = 22.05
+inertia = 0.01
+metadata/_edit_group_ = true
+
+[node name="Camera2D2" type="Camera2D" parent="Link"]
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Link"]
+position = Vector2(-35, 47)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("5_syh7u")
+texture_scale = 15.0
+script = ExtResource("4_ahigo")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Link"]
+position = Vector2(-35, 47)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("5_syh7u")
+texture_scale = 15.0
+script = ExtResource("4_ahigo")
+ROTATION_SPEED = 0.5
+
+[node name="Rock" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(809, -47)
+
+[node name="Rock2" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(1028, 569)
+
+[node name="Rock3" parent="." instance=ExtResource("1_yqn74")]
+position = Vector2(72, 699)
+
+[node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
+position = Vector2(132, 108)
+
+[node name="Monster4" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(2472, 4600)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
+
+[node name="Monster3" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(649, -177)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
+
+[node name="Monster2" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(1007, 940)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
+
+[node name="Monster5" parent="." instance=ExtResource("7_df86e")]
+position = Vector2(1416, -23)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
+
+[node name="Monster" parent="." instance=ExtResource("7_df86e")]
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_bkf25")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.607843, 0.607843, 0.607843, 1)
+
+[node name="BrokenGlass" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nvax2")
+position = Vector2(484, 341.5)
+scale = Vector2(19.7969, 11.8672)
+texture = ExtResource("9_u2da5")
+
+[connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

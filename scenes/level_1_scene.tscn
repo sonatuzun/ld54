@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8102api36bsi"]
+[gd_scene load_steps=8 format=3 uid="uid://b8102api36bsi"]
 
 [ext_resource type="Texture2D" uid="uid://c2pl7ul7fev58" path="res://assets/background.png" id="1_p2106"]
+[ext_resource type="Texture2D" uid="uid://bbx3gu8ul3vwc" path="res://assets/LevelParts/Tile.png" id="2_db3tn"]
 [ext_resource type="Texture2D" uid="uid://cdxldb7ksagfj" path="res://assets/LevelParts/algae.png" id="2_gtmvc"]
+[ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="3_rj7yf"]
 [ext_resource type="Texture2D" uid="uid://bosdp2oomqhix" path="res://assets/LevelParts/Bomb.png" id="3_rxyti"]
+[ext_resource type="Texture2D" uid="uid://bbmn4lpql0bv4" path="res://assets/LevelParts/elbow_pipe.png" id="4_7pqcl"]
+[ext_resource type="Texture2D" uid="uid://beb7v3bfeo274" path="res://assets/LevelParts/horizontal_pipe.png" id="5_pkh35"]
 
 [node name="Level1Scene" type="Node2D"]
 
 [node name="BGS" type="Node2D" parent="."]
+visible = false
 
 [node name="BG1" type="Sprite2D" parent="BGS"]
 scale = Vector2(3, 2.993)
@@ -24,14 +29,54 @@ scale = Vector2(3, -3)
 texture = ExtResource("1_p2106")
 
 [node name="BG4" type="Sprite2D" parent="BGS"]
-position = Vector2(5781, 3258)
-scale = Vector2(3, -3)
+position = Vector2(5770, 3250)
+scale = Vector2(-3, -3)
 texture = ExtResource("1_p2106")
 
+[node name="Tile" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_db3tn")
+region_enabled = true
+region_rect = Rect2(0, 0, 30000, 30000)
+
+[node name="Link" parent="." instance=ExtResource("3_rj7yf")]
+
 [node name="Algae" type="Sprite2D" parent="."]
-position = Vector2(-578, 478)
+position = Vector2(-8756, 5105)
+scale = Vector2(2, 2)
 texture = ExtResource("2_gtmvc")
 
+[node name="HP1" type="Sprite2D" parent="."]
+position = Vector2(-1975, 0)
+texture = ExtResource("5_pkh35")
+
+[node name="HP2" type="Sprite2D" parent="."]
+position = Vector2(-1604, 0)
+texture = ExtResource("5_pkh35")
+
+[node name="HP3" type="Sprite2D" parent="."]
+position = Vector2(-1223, 0)
+texture = ExtResource("5_pkh35")
+
+[node name="HP4" type="Sprite2D" parent="."]
+position = Vector2(-375, 125)
+rotation = 1.5708
+texture = ExtResource("5_pkh35")
+
+[node name="HP5" type="Sprite2D" parent="."]
+position = Vector2(-375, 463)
+rotation = 1.5708
+texture = ExtResource("5_pkh35")
+
+[node name="ElbowPipe" type="Sprite2D" parent="."]
+position = Vector2(-921, 76)
+texture = ExtResource("4_7pqcl")
+
 [node name="Bomb" type="Sprite2D" parent="."]
-position = Vector2(909, 412)
+position = Vector2(-536, 246)
 texture = ExtResource("3_rxyti")
+
+[node name="Algae2" type="Sprite2D" parent="."]
+position = Vector2(359, 358)
+texture = ExtResource("2_gtmvc")

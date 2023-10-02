@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://cl3tk14mqebeq"]
+
+[ext_resource type="Script" path="res://scenes/Richbie.gd" id="1_nr6k1"]
+[ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_ranpx"]
+[ext_resource type="Texture2D" uid="uid://hfhltf8dqt1t" path="res://scenes/zombie_stand_1.bmp" id="3_oqeub"]
+[ext_resource type="Texture2D" uid="uid://cveuqlqq26a76" path="res://scenes/zombie_walk_1.bmp" id="4_m6ow1"]
+[ext_resource type="Texture2D" uid="uid://hm0juy3kwlbj" path="res://scenes/zombie_walk_2.bmp" id="5_65hc4"]
+[ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="6_q0e38"]
+[ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="7_nx05n"]
+[ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="8_vri2y"]
+[ext_resource type="Script" path="res://scenes/HurtBox.gd" id="9_k7n2f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60ovu"]
+friction = 0.0
+bounce = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2jc3"]
+shader = ExtResource("2_ranpx")
+shader_parameter/isEnabled = false
+shader_parameter/paintColor = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4r7cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oqeub")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m6ow1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_65hc4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2qkb"]
+radius = 42.0
+height = 228.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_suyqf"]
+radius = 58.0
+height = 234.0
+
+[node name="Richbie" type="RigidBody2D"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_60ovu")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_nr6k1")
+
+[node name="DecisionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_e2jc3")
+position = Vector2(1, -45)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4r7cp")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("6_q0e38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -22)
+shape = SubResource("CapsuleShape2D_o2qkb")
+
+[node name="HpComponent" type="Node2D" parent="."]
+script = ExtResource("7_nx05n")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hpComponent")]
+script = ExtResource("8_vri2y")
+hpComponent = NodePath("../HpComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1, -25)
+shape = SubResource("CapsuleShape2D_suyqf")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("9_k7n2f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -25)
+shape = SubResource("CapsuleShape2D_suyqf")
+
+[connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
+[connection signal="damageTaken" from="HpComponent" to="AnimatedSprite2D" method="flash"]
+[connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]

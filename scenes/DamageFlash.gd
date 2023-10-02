@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CanvasItem
 
 var _shaderMaterial : ShaderMaterial
 const SINGLE_FLASH_DURATION = 0.05

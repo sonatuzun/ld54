@@ -25,22 +25,24 @@ script = ExtResource("1_j8txa")
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 show_behind_parent = true
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("2_u53vb")
-offset = Vector2(200, -200)
+position = Vector2(-29.6504, 26.2361)
+rotation = -0.774926
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4vunw")
+offset = Vector2(270, 0)
 
 [node name="HeadCollider" type="CollisionShape2D" parent="."]
-position = Vector2(116, -116)
+position = Vector2(113.35, -115.764)
 shape = SubResource("CircleShape2D_foyyf")
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(58.689, -57.0159)
+position = Vector2(44.6098, -40.9268)
 rotation = 0.767945
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_y3sj7")
 
 [node name="HitTrigger" type="Area2D" parent="."]
-position = Vector2(58.689, -57.0159)
+position = Vector2(29.0386, -30.7798)
 rotation = 0.767945
 collision_layer = 2
 collision_mask = 2

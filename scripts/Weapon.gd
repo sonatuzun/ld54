@@ -37,9 +37,14 @@ func _on_trigger(area):
 	if (area is HitboxComponent):
 
 		var angular_magn = abs(angular_velocity)
-		var MAX_MAGN = 14.0
+		var MAX_MAGN = 20
 
 		angular_magn = clamp(angular_magn,0, MAX_MAGN)
+		if angular_magn < 3:
+			print("weapon did:", WEAPON_DAMAGE_BASE / 5, " damage.")
+			area.damage(WEAPON_DAMAGE_BASE / 5)
+			return
+		
 		var extraDmg = angular_magn / MAX_MAGN
 		var finalDmg = (1 + extraDmg) * WEAPON_DAMAGE_BASE
 

@@ -4,10 +4,10 @@
 [ext_resource type="Shader" path="res://shaders/paint_shader.gdshader" id="2_sbp6y"]
 [ext_resource type="Texture2D" uid="uid://gd6ofxcivj5s" path="res://assets/character_spritesheet.png" id="3_7nitl"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="3_58lwe"]
-[ext_resource type="PackedScene" uid="uid://fhg75rjc8nvb" path="res://scenes/WrenchDoruk.tscn" id="3_xm1sh"]
 [ext_resource type="Shader" path="res://darkness.gdshader" id="4_qrecx"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="5_iiegp"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="5_wwub0"]
+[ext_resource type="PackedScene" uid="uid://ght0w6vgmw1c" path="res://scenes/WrenchSonat.tscn" id="8_nwov8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qnp2p"]
 shader = ExtResource("2_sbp6y")
@@ -45,12 +45,6 @@ texture = ExtResource("3_7nitl")
 hframes = 12
 script = ExtResource("3_58lwe")
 
-[node name="Wrench" parent="." instance=ExtResource("3_xm1sh")]
-position = Vector2(37, 22)
-mass = 3.0
-inertia = 0.0
-angular_damp = 15.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 7)
 shape = SubResource("CapsuleShape2D_be8bv")
@@ -71,6 +65,8 @@ hpComponent = NodePath("../HpComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dqxw8")
+
+[node name="Wrench" parent="." instance=ExtResource("8_nwov8")]
 
 [connection signal="damageTaken" from="HpComponent" to="Sprite" method="flash"]
 [connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]

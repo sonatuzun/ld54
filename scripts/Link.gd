@@ -82,16 +82,17 @@ func HandleSpriteFrame(delta, isMoving, spriteSet):
 		$Sprite.frame_coords.x = spriteSet * 3
 
 func HandleWrenchRotation():
-	var player: RigidBody2D = get_tree().get_first_node_in_group("Player")
+	var player = self
 	
 	var mousePosition = get_global_mouse_position()
 	var plapos = player.position
 	var mouseRelativePosition = (mousePosition - plapos)
 	var targetWrenchAngle = -mouseRelativePosition.angle_to(Vector2.LEFT)
 	targetWrenchAngle += 1.25 * PI + PI
-	var currentWrenchAngle = $Wrench.rotation
-	var wrenchAngleDiff = fmod(targetWrenchAngle - currentWrenchAngle, 2 * PI) - PI
-	$Wrench.apply_torque_impulse(wrenchAngleDiff * 50000 * $Wrench._postScale)
+	if $Wrench:
+		var currentWrenchAngle = $Wrench.rotation
+		var wrenchAngleDiff = fmod(targetWrenchAngle - currentWrenchAngle, 2 * PI) - PI
+		$Wrench.apply_torque_impulse(wrenchAngleDiff * 50000 * $Wrench._postScale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

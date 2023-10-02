@@ -39,7 +39,11 @@ node_a = NodePath("../Wrench")
 node_b = NodePath("..")
 softness = 0.1
 
+[node name="Wrench" parent="." instance=ExtResource("8_nwov8")]
+position = Vector2(0, 30)
+
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = 2
 material = SubResource("ShaderMaterial_qnp2p")
 texture = ExtResource("3_7nitl")
 hframes = 12
@@ -65,10 +69,6 @@ hpComponent = NodePath("../HpComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dqxw8")
-
-[node name="Wrench" parent="." instance=ExtResource("8_nwov8")]
-z_index = -1
-position = Vector2(0, 30)
 
 [connection signal="damageTaken" from="HpComponent" to="Sprite" method="flash"]
 [connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]

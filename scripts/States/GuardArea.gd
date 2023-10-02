@@ -7,7 +7,7 @@ var player
 
 var lastShootTime = 0
 var canShoot = true
-var COOLDOWN = 3.0
+var COOLDOWN = 5.0
 
 func id():
 	return StateNames.GuardArea

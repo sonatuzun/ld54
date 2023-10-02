@@ -7,7 +7,7 @@ var _spriteProgress := 0.0
 const BASE_MOVEMENT_SPEED = 140000
 const IDLE_ANIMATION_SPEED = 4
 const RUNNING_ANIMATION_SPEED = 0.01
-var _speedMultiplier = 1
+@export var _speedMultiplier = 1
 var _velocity = Vector2()
 const BASE_VELOCITY_LOSS = 0.1
 

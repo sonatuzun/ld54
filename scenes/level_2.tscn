@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceveqdaem2c1a"]
+
+[ext_resource type="PackedScene" uid="uid://b66darbn5cmxc" path="res://scenes/Prefabs/guard_area_manager.tscn" id="1_jsi8o"]
+[ext_resource type="PackedScene" uid="uid://cnhg1yivjbkv2" path="res://ai_enemy.tscn" id="2_8iy21"]
+[ext_resource type="Script" path="res://scripts/EnergyBallProjectile.gd" id="3_3whre"]
+[ext_resource type="Texture2D" uid="uid://4kaswyqdq3ap" path="res://assets/energyball_first.png" id="4_v7tia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iea7e"]
+radius = 25.0
+
+[node name="level_2" type="Node2D"]
+
+[node name="GuardAreaManager" parent="." instance=ExtResource("1_jsi8o")]
+position = Vector2(50, 10)
+
+[node name="Area2D" parent="GuardAreaManager" index="0"]
+position = Vector2(761, 151)
+
+[node name="Enemy" parent="." instance=ExtResource("2_8iy21")]
+position = Vector2(631, 390)
+
+[node name="EnergyBallProjectile" type="Area2D" parent="."]
+script = ExtResource("3_3whre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnergyBallProjectile"]
+shape = SubResource("CircleShape2D_iea7e")
+
+[node name="energy ball sprite" type="Sprite2D" parent="EnergyBallProjectile"]
+texture = ExtResource("4_v7tia")
+
+[editable path="GuardAreaManager"]

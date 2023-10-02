@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cimo57jsee6o1"]
+[gd_scene load_steps=4 format=3 uid="uid://cimo57jsee6o1"]
 
 [ext_resource type="PackedScene" uid="uid://ddqotdis3mer5" path="res://scenes/DenitoPrefabs/denito_enemy.tscn" id="1_py1j1"]
+[ext_resource type="PackedScene" uid="uid://30wgs80q77rc" path="res://scenes/Rock.tscn" id="2_2ikxy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0vcd7"]
 vertices = PackedVector2Array(32, 620, 33, 84, 163, 92, 97, 432, 1118, 530, 1118, 622, 97, 530, 1095, 92, 1095, 309, 382, 309, 382, 383, 533, 383, 533, 432)
@@ -18,3 +19,7 @@ position = Vector2(644, 582)
 [node name="DenitoEnemy" parent="." node_paths=PackedStringArray("movementTarget") instance=ExtResource("1_py1j1")]
 position = Vector2(974, 203)
 movementTarget = NodePath("../NavigationTarget")
+
+[node name="Rock" parent="." instance=ExtResource("2_2ikxy")]
+position = Vector2(337, 320)
+rotation = 0.785398

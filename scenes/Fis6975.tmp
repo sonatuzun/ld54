@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://yxa5mw7apkrc"]
+
+[ext_resource type="Script" path="res://scripts/Fishes.gd" id="1_ml86m"]
+[ext_resource type="PackedScene" uid="uid://doqn4bwky7stc" path="res://scenes/Fish.tscn" id="2_bxp45"]
+
+[node name="Fishes" type="Node2D"]
+script = ExtResource("1_ml86m")
+Fish = ExtResource("2_bxp45")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]

@@ -29,13 +29,17 @@ shader_parameter/brightness = 1.0
 shader_parameter/contrast = 2.0
 shader_parameter/saturation = 1.0
 
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_828q0"]
+shader = ExtResource("9_38dcr")
+shader_parameter/baseRate = 10.0
 [node name="World" type="Node2D"]
 script = ExtResource("1_hl4ev")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(509, 337)
-scale = Vector2(1.205, 1.205)
+scale = Vector2(3, 3)
 texture = ExtResource("3_civsd")
 
 [node name="Link" parent="." groups=["Player"] instance=ExtResource("1_co5tl")]
@@ -53,11 +57,11 @@ position_smoothing_speed = 10.0
 position = Vector2(-457, -311)
 
 [node name="PointLight2D" type="PointLight2D" parent="Link"]
-position = Vector2(-35, 47)
-energy = 0.5
+position = Vector2(-35, 42)
+energy = 0.1
 shadow_enabled = true
 texture = ExtResource("5_syh7u")
-texture_scale = 15.0
+texture_scale = 50.0
 script = ExtResource("4_ahigo")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Link"]
@@ -75,7 +79,6 @@ material = SubResource("ShaderMaterial_828q0")
 position = Vector2(-26, 29.5)
 scale = Vector2(19.7969, 11.8672)
 texture = ExtResource("9_u2da5")
-
 [node name="BrokenGlass" type="Sprite2D" parent="Link"]
 visible = false
 material = SubResource("ShaderMaterial_nvax2")
@@ -83,28 +86,43 @@ position = Vector2(-26, 29.5)
 scale = Vector2(19.7969, 11.8672)
 texture = ExtResource("9_u2da5")
 
-[node name="Rock" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(809, -47)
+[node name="Camera2D2" type="Camera2D" parent="Link"]
+position = Vector2(-457, -311)
+zoom = Vector2(0.35, 0.35)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
-[node name="Rock4" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(994, -160)
-
-[node name="Rock5" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(1154, 164)
-
-[node name="Rock6" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(1371, -130)
-
-[node name="Rock2" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(1028, 569)
-
-[node name="Rock3" parent="." instance=ExtResource("1_yqn74")]
-position = Vector2(72, 699)
+[node name="WaterShader" type="Sprite2D" parent="Link/Camera2D2"]
+material = SubResource("ShaderMaterial_828q0")
+position = Vector2(-13.4999, 12.9998)
+scale = Vector2(44.8359, 24.8438)
+texture = ExtResource("9_u2da5")
 
 [node name="Box (StaticBody2D)" parent="." instance=ExtResource("4_wa6lc")]
 position = Vector2(140, 110)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.164706, 0.164706, 0.164706, 1)
+color = Color(0.619608, 0.647059, 0.611765, 1)
+
+[node name="rocks" type="Node2D" parent="."]
+
+[node name="Rock" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(809, -47)
+
+[node name="Rock4" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(994, -160)
+
+[node name="Rock5" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(1154, 164)
+
+[node name="Rock6" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(1371, -130)
+
+[node name="Rock2" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(1028, 569)
+
+[node name="Rock3" parent="rocks" instance=ExtResource("1_yqn74")]
+position = Vector2(72, 699)
 
 [connection signal="playerDied" from="Link" to="." method="_on_link_player_died"]

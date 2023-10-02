@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bhgpf3btq27eq" path="res://assets/hamsi.png" id="3_kxrfy"]
 [ext_resource type="Script" path="res://scripts/ForegroundLayer.gd" id="3_usjbq"]
 
-[node name="Fishes" type="Node2D"]
+[node name="Fishes2" type="Node2D"]
 position = Vector2(920, 368)
 script = ExtResource("1_c3diu")
 

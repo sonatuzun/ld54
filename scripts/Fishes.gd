@@ -23,13 +23,13 @@ func _ready():
 		
 		var fish2 = Fish.instantiate()
 		fish2.position = Vector2(1000 + randf() * 1000, 1000 + randf() * 1000)
-		fish2.get_child(0).scale = Vector2(2,2) * (randf() + 0.5)
+		fish2.get_child(0).scale = Vector2(0.25, 0.25) * (randf() + 0.5)
 		fishes2.append(fish2)
 		$ParallaxBackground/ParallaxLayer2.add_child(fish2)
 		
 		var fish3 = Fish.instantiate()
 		fish3.position = Vector2(1000 + randf() * 1000, 1000 + randf() * 1000)
-		fish3.get_child(0).scale = Vector2(3,3) * (randf() + 0.5)
+		fish3.get_child(0).scale = Vector2(0.3, 0.3) * (randf() + 0.5)
 		fishes3.append(fish3)
 		$ParallaxBackground/ParallaxLayer3.add_child(fish3)
 

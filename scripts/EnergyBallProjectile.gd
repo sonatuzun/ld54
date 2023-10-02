@@ -1,11 +1,12 @@
 extends Area2D
 
 var speed = 750
-@export var EnergyDamage = 50
-
+@export var EnergyDamage = 15
 var moveDir = Vector2.ZERO
 
-var maxScale = 2.5
+var firstScaleLevel = 1.9
+var secondScaleLevel = 2.7
+var maxScale = 3.5
 
 func _ready():
 	connect("area_entered",self.on_area_entered)
@@ -19,8 +20,14 @@ func fire(dir: Vector2, spawnPos: Vector2):
 	
 
 func _physics_process(delta):
+	if scale.x < firstScaleLevel:
+		$"energy ball sprite".set_texture(preload("res://assets/energy_ball/energyball_first.png"))
+	elif scale.x < secondScaleLevel:
+		$"energy ball sprite".set_texture(preload("res://assets/energy_ball/energyball_mid.png"))
+	elif scale.x < maxScale:
+		$"energy ball sprite".set_texture(preload("res://assets/energy_ball/energyball_final.png"))
+	
 	translate(moveDir * speed * delta)
-	var scaleIncrease = 100
 	if(scale.x < maxScale):
 		scale += Vector2.ONE * delta
 

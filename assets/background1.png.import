@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3iio03twmtf5"
-path="res://.godot/imported/energyball_final.png-e5e7438219c7f2804fca5783a8f62031.ctex"
+uid="uid://478nwqt3f4fr"
+path="res://.godot/imported/background1.png-a44d78bededebe7a201c901af9d9ce13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/energyball_final.png"
-dest_files=["res://.godot/imported/energyball_final.png-e5e7438219c7f2804fca5783a8f62031.ctex"]
+source_file="res://assets/background1.png"
+dest_files=["res://.godot/imported/background1.png-a44d78bededebe7a201c901af9d9ce13.ctex"]
 
 [params]
 

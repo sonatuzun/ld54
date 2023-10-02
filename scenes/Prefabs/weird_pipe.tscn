@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwok18qdcj8ts"]
+
+[ext_resource type="Texture2D" uid="uid://bf7r6m42hgf7a" path="res://assets/LevelParts/part4.png" id="1_2hpqe"]
+
+[node name="weird_pipe" type="Sprite2D"]
+position = Vector2(216, 1048)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_2hpqe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-245.333, -373.333, -208, -186.667, 85.3333, -138.667, 96, 384, 224, 400, 218.667, -202.667, -85.3333, -282.667, -122.667, -389.333)

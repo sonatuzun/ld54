@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmjo6cm5lvis3"]
 
 [ext_resource type="Script" path="res://scripts/EnergyBallProjectile.gd" id="1_1o4b4"]
-[ext_resource type="Texture2D" uid="uid://4kaswyqdq3ap" path="res://assets/energyball_first.png" id="2_n6ubx"]
+[ext_resource type="Texture2D" uid="uid://d01ubwkv8q5qx" path="res://assets/energy_ball/energyball_first.png" id="2_814wh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iea7e"]
 radius = 25.0
@@ -14,4 +14,4 @@ shape = SubResource("CircleShape2D_iea7e")
 
 [node name="energy ball sprite" type="Sprite2D" parent="."]
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("2_n6ubx")
+texture = ExtResource("2_814wh")

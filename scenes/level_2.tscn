@@ -1,42 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceveqdaem2c1a"]
+[gd_scene load_steps=18 format=3 uid="uid://ceveqdaem2c1a"]
 
 [ext_resource type="PackedScene" uid="uid://b66darbn5cmxc" path="res://scenes/Prefabs/guard_area_manager.tscn" id="1_jsi8o"]
 [ext_resource type="PackedScene" uid="uid://cnhg1yivjbkv2" path="res://ai_enemy.tscn" id="2_8iy21"]
-[ext_resource type="PackedScene" uid="uid://bmjo6cm5lvis3" path="res://scenes/Prefabs/energy_ball_projectile.tscn" id="3_gglaq"]
 [ext_resource type="PackedScene" uid="uid://bg7d3ssaoh8nn" path="res://scenes/Link.tscn" id="5_5735a"]
 [ext_resource type="Texture2D" uid="uid://k2vst384yyq" path="res://assets/BG-V2.png" id="5_ifse4"]
 [ext_resource type="PackedScene" uid="uid://dhmu22bgt8f44" path="res://scenes/Prefabs/guard_area.tscn" id="6_b4nl2"]
+[ext_resource type="Texture2D" uid="uid://bosdp2oomqhix" path="res://assets/LevelParts/Bomb.png" id="6_fkr0s"]
+[ext_resource type="Texture2D" uid="uid://d3ix75chb2fok" path="res://assets/LevelParts/destroyed_bomb.png" id="7_jwadn"]
+[ext_resource type="PackedScene" uid="uid://b7p6h8hvv002s" path="res://scenes/Prefabs/elbow_pipe.tscn" id="8_naff6"]
+[ext_resource type="Texture2D" uid="uid://cc2oabnw6v2ed" path="res://assets/LevelParts/ocean_vent.png" id="9_qja8x"]
+[ext_resource type="PackedScene" uid="uid://dyeihq6fnwgfk" path="res://scenes/Prefabs/horizontal_pipe.tscn" id="11_e2a3v"]
+[ext_resource type="Texture2D" uid="uid://cdxldb7ksagfj" path="res://assets/LevelParts/algae.png" id="11_ihtil"]
+[ext_resource type="PackedScene" uid="uid://dbsp47633cplq" path="res://scenes/Prefabs/corner_part_3.tscn" id="14_7f3jp"]
+[ext_resource type="Texture2D" uid="uid://cximbjsp6kna0" path="res://assets/background3.png" id="14_o0dvp"]
+[ext_resource type="PackedScene" uid="uid://dttnsift7m8w0" path="res://scenes/Prefabs/vent.tscn" id="15_31tdc"]
+[ext_resource type="PackedScene" uid="uid://cwok18qdcj8ts" path="res://scenes/Prefabs/weird_pipe.tscn" id="15_hn08f"]
+[ext_resource type="Texture2D" uid="uid://478nwqt3f4fr" path="res://assets/background1.png" id="16_ue4qi"]
+[ext_resource type="Texture2D" uid="uid://c5y3h8t21i862" path="res://assets/background4.png" id="17_q4v2u"]
 
 [node name="level_2" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("2_8iy21")]
+position = Vector2(2016, -208)
+
+[node name="Enemy2" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(1779, 1239)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy8" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(976, 1072)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy5" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(-1088, 1416)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy6" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(-1608, 808)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy7" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(-56, 1368)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy3" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(168, 35)
+state_m = NodePath("../Enemy/StateMachine")
+
+[node name="Enemy4" parent="Node2D" node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
+position = Vector2(-595, -55)
+state_m = NodePath("../Enemy/StateMachine")
 
 [node name="GuardAreaManager" parent="." instance=ExtResource("1_jsi8o")]
 position = Vector2(50, 10)
 
 [node name="Area2D" parent="GuardAreaManager" index="0"]
-position = Vector2(761, 151)
+position = Vector2(1038, -202)
 
 [node name="Area2D2" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
-position = Vector2(954, 734)
+position = Vector2(766, 1430)
+
+[node name="Area2D8" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
+position = Vector2(1798, 1422)
+
+[node name="Area2D5" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
+position = Vector2(-1674, 454)
+
+[node name="Area2D6" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
+position = Vector2(-826, 1390)
+
+[node name="Area2D7" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
+position = Vector2(-66, 1430)
 
 [node name="Area2D3" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
-position = Vector2(-306, -294)
+position = Vector2(-1314, -298)
 
-[node name="Enemy" parent="." instance=ExtResource("2_8iy21")]
-position = Vector2(631, 390)
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(656, 1178)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(528, -340)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="Enemy4" parent="." node_paths=PackedStringArray("state_m") instance=ExtResource("2_8iy21")]
-position = Vector2(-595, -55)
-state_m = NodePath("../Enemy/StateMachine")
-
-[node name="EnergyBallProjectile" parent="." instance=ExtResource("3_gglaq")]
+[node name="Area2D4" parent="GuardAreaManager" instance=ExtResource("6_b4nl2")]
+position = Vector2(1870, 662)
 
 [node name="Link" parent="." instance=ExtResource("5_5735a")]
 z_index = 5
@@ -44,11 +86,233 @@ position = Vector2(169, 240)
 _speedMultiplier = 5
 
 [node name="Camera2D" type="Camera2D" parent="Link"]
-zoom = Vector2(0.25, 0.25)
+zoom = Vector2(0.35, 0.35)
 
-[node name="Bg-v2" type="Sprite2D" parent="."]
+[node name="Decor" type="Node2D" parent="."]
+
+[node name="Bomb" type="Sprite2D" parent="Decor"]
+position = Vector2(-153, 93)
+texture = ExtResource("6_fkr0s")
+
+[node name="Bomb2" type="Sprite2D" parent="Decor"]
+position = Vector2(1352, 1016)
+texture = ExtResource("6_fkr0s")
+
+[node name="Bomb3" type="Sprite2D" parent="Decor"]
+position = Vector2(976, -88)
+texture = ExtResource("6_fkr0s")
+
+[node name="DestroyedBomb" type="Sprite2D" parent="Decor"]
+position = Vector2(-1687, 1344)
+texture = ExtResource("7_jwadn")
+
+[node name="DestroyedBomb2" type="Sprite2D" parent="Decor"]
+position = Vector2(-1040, 824)
+texture = ExtResource("7_jwadn")
+
+[node name="ElbowPipe5" parent="Decor" instance=ExtResource("8_naff6")]
+position = Vector2(-1816, 1632)
+rotation = -3.14114
+scale = Vector2(1.5, 1.5)
+
+[node name="ElbowPipe7" parent="Decor" instance=ExtResource("8_naff6")]
+position = Vector2(2160, 208)
+rotation = -2.59643
+scale = Vector2(1.5, 1.5)
+
+[node name="ElbowPipe6" parent="Decor" instance=ExtResource("8_naff6")]
+position = Vector2(2168, 1656)
+rotation = -4.71082
+scale = Vector2(1.5, 1.5)
+
+[node name="OceanVent" type="Sprite2D" parent="Decor"]
+position = Vector2(-1512, -168)
+texture = ExtResource("9_qja8x")
+
+[node name="OceanVent3" type="Sprite2D" parent="Decor"]
+position = Vector2(1440, 1536)
+texture = ExtResource("9_qja8x")
+
+[node name="OceanVent4" type="Sprite2D" parent="Decor"]
+z_index = 1
+position = Vector2(-1288, 1552)
+texture = ExtResource("9_qja8x")
+
+[node name="OceanVent2" type="Sprite2D" parent="Decor"]
+position = Vector2(632, -264)
+rotation = -0.00863883
+texture = ExtResource("9_qja8x")
+
+[node name="HorizontalPipe4" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-1375.25, 1767.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe5" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-767.25, 1759.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe6" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-143.25, 1751.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe7" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(440.75, 1751.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe10" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-735.25, -568.75)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe11" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-111.25, -576.75)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe12" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(472.75, -576.75)
+scale = Vector2(1.5, 1.5)
+
+[node name="w" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(1048.75, 1743.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="w2" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(1072, -576)
+scale = Vector2(1.5, 1.5)
+
+[node name="HorizontalPipe9" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(1672.75, 1735.25)
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-1912, -48)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe2" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-1904, 536)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe3" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(-1896, 1160)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe4" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(2279.25, -31.25)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe5" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(2287.25, 552.75)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="vert pipe6" parent="Decor" instance=ExtResource("11_e2a3v")]
+position = Vector2(2295.25, 1176.75)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="Algae" type="Sprite2D" parent="Decor"]
+position = Vector2(-1424, 1424)
+texture = ExtResource("11_ihtil")
+
+[node name="Algae2" type="Sprite2D" parent="Decor"]
+position = Vector2(-904, 1528)
+texture = ExtResource("11_ihtil")
+
+[node name="Algae3" type="Sprite2D" parent="Decor"]
+position = Vector2(712, 1504)
+texture = ExtResource("11_ihtil")
+
+[node name="CornerPart3" parent="Decor" instance=ExtResource("14_7f3jp")]
+position = Vector2(1944, -152)
+
+[node name="CornerPart4" parent="Decor" instance=ExtResource("14_7f3jp")]
+position = Vector2(-728, 1344)
+scale = Vector2(1.05, 1.05)
+
+[node name="CornerPart6" parent="Decor" instance=ExtResource("14_7f3jp")]
+position = Vector2(-1576, 408)
+scale = Vector2(1.05, 1.05)
+
+[node name="CornerPart5" parent="Decor" instance=ExtResource("14_7f3jp")]
+position = Vector2(-1506.85, -232)
+rotation = -1.5708
+
+[node name="weird_pipe" parent="Decor" instance=ExtResource("15_hn08f")]
+
+[node name="weird_pipe2" parent="Decor" instance=ExtResource("15_hn08f")]
+position = Vector2(1840, 632)
+rotation = -3.12555
+
+[node name="Vent" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(-720, 632)
+
+[node name="Vent2" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(1040, 448)
+
+[node name="Vent3" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(272, -184)
+
+[node name="Vent4" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(-544, -96)
+
+[node name="Vent5" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(-1168, 240)
+
+[node name="Vent6" parent="Decor" instance=ExtResource("15_31tdc")]
+position = Vector2(456, 584)
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="LEVEL" type="Sprite2D" parent="Backgrounds"]
+z_index = -2
+position = Vector2(500, 260)
+scale = Vector2(3, 3)
+texture = ExtResource("14_o0dvp")
+
+[node name="right mid" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(6260, 260)
+scale = Vector2(3, 3)
+texture = ExtResource("14_o0dvp")
+
+[node name="top right" type="Sprite2D" parent="Backgrounds"]
+z_index = -2
+position = Vector2(6260, -2980)
+scale = Vector2(3, 3)
+texture = ExtResource("14_o0dvp")
+
+[node name="top left" type="Sprite2D" parent="Backgrounds"]
+z_index = -2
+position = Vector2(-5260, -2980)
+scale = Vector2(3, 3)
+texture = ExtResource("14_o0dvp")
+
+[node name="mid left" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-5260, 260)
+scale = Vector2(3, 3)
+texture = ExtResource("16_ue4qi")
+
+[node name="bottom left" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-5260, 3480)
+scale = Vector2(3, 3)
+texture = ExtResource("17_q4v2u")
+
+[node name="bottom right" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(6260, 3480)
+scale = Vector2(3, 3)
+texture = ExtResource("17_q4v2u")
+
+[node name="top" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(500, -2980)
+scale = Vector2(3, 3)
+texture = ExtResource("14_o0dvp")
+
+[node name="bottom" type="Sprite2D" parent="Backgrounds"]
 z_index = -1
-position = Vector2(641, 280)
+position = Vector2(500, 3480)
+rotation = -0.000187435
 scale = Vector2(3, 3)
 texture = ExtResource("5_ifse4")
 

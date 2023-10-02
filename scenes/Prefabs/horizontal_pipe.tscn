@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyeihq6fnwgfk"]
+
+[ext_resource type="Texture2D" uid="uid://beb7v3bfeo274" path="res://assets/LevelParts/horizontal_pipe.png" id="1_cq1h4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oc8b"]
+size = Vector2(421, 127)
+
+[node name="HorizontalPipe" type="Sprite2D"]
+position = Vector2(-1433, 640)
+texture = ExtResource("1_cq1h4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_8oc8b")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7p6h8hvv002s"]
+
+[ext_resource type="Texture2D" uid="uid://bbmn4lpql0bv4" path="res://assets/LevelParts/elbow_pipe.png" id="1_8g3hs"]
+
+[node name="ElbowPipe" type="Sprite2D"]
+position = Vector2(783, -73.9999)
+rotation = -1.47428
+texture = ExtResource("1_8g3hs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-103, -130, 67, -105, 117, 127, -11, 133, -25, -21, -132, -35)

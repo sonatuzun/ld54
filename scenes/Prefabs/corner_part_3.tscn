@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbsp47633cplq"]
+
+[ext_resource type="Texture2D" uid="uid://d3kutcax4yew3" path="res://assets/LevelParts/corner_part3.png" id="1_ix5hi"]
+
+[node name="CornerPart3" type="Sprite2D"]
+position = Vector2(1944, -232)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ix5hi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-314.667, -320, 186.667, -314.667, 298.667, -192, 293.333, 325.333, 160, 325.333, 165.333, -186.667, 90.6667, -213.333, -320, -202.667)

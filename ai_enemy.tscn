@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/States/GuardArea.gd" id="4_bxa04"]
 [ext_resource type="Texture2D" uid="uid://cfqy67lrkom3" path="res://unpaintedRichulhu.png" id="4_ty0ac"]
 [ext_resource type="Script" path="res://scenes/DamageFlash.gd" id="5_if2tr"]
+[ext_resource type="PackedScene" uid="uid://bmjo6cm5lvis3" path="res://scenes/Prefabs/energy_ball_projectile.tscn" id="5_p4j5n"]
 [ext_resource type="Script" path="res://scripts/components/HitboxComponent.gd" id="6_c4oit"]
 [ext_resource type="Script" path="res://scripts/components/HpComponent.gd" id="7_jbjle"]
 
@@ -20,9 +21,6 @@ radius = 65.0692
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qw7oo"]
 radius = 100.125
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkcbv"]
-bg_color = Color(0.698039, 0.270588, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gec4l"]
 radius = 185.2
@@ -45,6 +43,7 @@ enemy = NodePath("../..")
 [node name="GuardAreaState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("rb")]
 script = ExtResource("4_bxa04")
 rb = NodePath("../..")
+EnergyBallPrefab = ExtResource("5_p4j5n")
 
 [node name="enemy visuals" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_kdqya")
@@ -68,17 +67,10 @@ hpComponent = NodePath("../HpComponent")
 position = Vector2(-6, -29)
 shape = SubResource("CircleShape2D_qw7oo")
 
-[node name="HpComponent" type="Node2D" parent="." node_paths=PackedStringArray("healthBar")]
+[node name="HpComponent" type="Node2D" parent="."]
+position = Vector2(11, 33)
 script = ExtResource("7_jbjle")
-healthBar = NodePath("HealthBar")
 INITIAL_HP = 80
-
-[node name="HealthBar" type="ProgressBar" parent="HpComponent"]
-offset_left = -46.0
-offset_top = -115.0
-offset_right = 62.0
-offset_bottom = -88.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_lkcbv")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 position = Vector2(11, 33)
@@ -90,5 +82,4 @@ shape = SubResource("CircleShape2D_gec4l")
 [connection signal="damageTaken" from="HpComponent" to="enemy visuals" method="flash" flags=18]
 [connection signal="hpReachedZero" from="HpComponent" to="." method="_on_hp_component_hp_reached_zero"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_entered" from="DetectionArea" to="StateMachine/GuardAreaState" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
